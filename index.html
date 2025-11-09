@@ -4,10 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Gerador de QR Code</title>
-    <script crossorigin src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
     <style>
         * {
             margin: 0;
@@ -54,7 +50,6 @@
         }
 
         input[type="text"],
-        input[type="url"],
         textarea {
             width: 100%;
             padding: 12px 15px;
@@ -74,7 +69,7 @@
 
         textarea {
             resize: vertical;
-            min-height: 80px;
+            min-height: 100px;
         }
 
         .options-grid {
@@ -137,7 +132,7 @@
             color: white;
         }
 
-        .btn-download:hover {
+        .btn-download:hover:not(:disabled) {
             background: #38a169;
             transform: translateY(-2px);
             box-shadow: 0 10px 20px rgba(72, 187, 120, 0.3);
@@ -157,7 +152,6 @@
             background: #f7fafc;
             border-radius: 15px;
             padding: 30px;
-            margin-top: 20px;
         }
 
         .qr-code-wrapper {
@@ -165,6 +159,15 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #qrcode canvas,
+        #qrcode img {
+            display: block;
+            border-radius: 5px;
         }
 
         .placeholder {
@@ -184,6 +187,20 @@
             margin-top: 30px;
         }
 
+        .alert {
+            background: #fed7d7;
+            border: 1px solid #fc8181;
+            color: #742a2a;
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            display: none;
+        }
+
+        .alert.show {
+            display: block;
+        }
+
         @media (max-width: 640px) {
             .container {
                 padding: 25px;
@@ -200,33 +217,109 @@
     </style>
 </head>
 <body>
-    <div id="root"></div>
+    <div class="container">
+        <h1>🎯 Gerador de QR Code</h1>
+        
+        <div class="alert" id="alert"></div>
 
-    <script type="text/babel">
-        const { useState, useRef, useEffect } = React;
+        <div class="input-group">
+            <label>Texto ou URL</label>
+            <textarea
+                id="textInput"
+                placeholder="Digite o texto, URL ou qualquer informação...
+Exemplos:
+• https://www.google.com
+• Olá, este é o meu QR code!
+• tel:+258123456789
+• mailto:email@exemplo.com"
+            ></textarea>
+        </div>
 
-        function QRCodeGenerator() {
-            const [text, setText] = useState('');
-            const [qrColor, setQrColor] = useState('#000000');
-            const [bgColor, setBgColor] = useState('#FFFFFF');
-            const [size, setSize] = useState(256);
-            const [hasQR, setHasQR] = useState(false);
-            const qrRef = useRef(null);
-            const qrInstance = useRef(null);
+        <div class="options-grid">
+            <div class="option-item">
+                <label>Cor do QR Code</label>
+                <input type="color" id="qrColor" value="#000000">
+            </div>
 
-            const generateQR = () => {
-                if (!text.trim()) {
-                    alert('Por favor, insira algum texto ou URL!');
-                    return;
-                }
+            <div class="option-item">
+                <label>Cor de Fundo</label>
+                <input type="color" id="bgColor" value="#FFFFFF">
+            </div>
 
+            <div class="option-item">
+                <label>Tamanho (px)</label>
+                <input type="number" id="sizeInput" value="256" min="128" max="512" step="32">
+            </div>
+        </div>
+
+        <div class="button-group">
+            <button class="btn-generate" onclick="generateQR()">
+                ✨ Gerar QR Code
+            </button>
+            <button class="btn-download" id="downloadBtn" onclick="downloadQR()" disabled>
+                📥 Baixar PNG
+            </button>
+        </div>
+
+        <div class="qr-preview">
+            <div class="placeholder" id="placeholder">
+                <div class="placeholder-icon">📱</div>
+                <p>Seu QR Code aparecerá aqui</p>
+                <p style="font-size: 12px; margin-top: 10px;">Digite um texto acima e clique em "Gerar QR Code"</p>
+            </div>
+            <div class="qr-code-wrapper" id="qrWrapper" style="display: none;">
+                <div id="qrcode"></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            Desenvolvido com ❤️ • Totalmente gratuito e privado • Funciona offline
+        </div>
+    </div>
+
+    <!-- Biblioteca QRCode.js da davidshimjs -->
+    <script src="https://cdn.jsdelivr.net/npm/davidshimjs-qrcodejs@0.0.2/qrcode.min.js"></script>
+    
+    <script>
+        let currentQRCode = null;
+
+        function showAlert(message, type = 'error') {
+            const alert = document.getElementById('alert');
+            alert.textContent = message;
+            alert.className = 'alert show';
+            setTimeout(() => {
+                alert.className = 'alert';
+            }, 3000);
+        }
+
+        function generateQR() {
+            const text = document.getElementById('textInput').value.trim();
+            const qrColor = document.getElementById('qrColor').value;
+            const bgColor = document.getElementById('bgColor').value;
+            const size = parseInt(document.getElementById('sizeInput').value);
+
+            if (!text) {
+                showAlert('Por favor, insira algum texto ou URL!');
+                return;
+            }
+
+            // Verificar se a biblioteca QRCode está carregada
+            if (typeof QRCode === 'undefined') {
+                showAlert('Erro ao carregar a biblioteca. Verifique sua conexão com a internet.');
+                return;
+            }
+
+            try {
                 // Limpar QR code anterior
-                if (qrRef.current) {
-                    qrRef.current.innerHTML = '';
-                }
+                const qrcodeDiv = document.getElementById('qrcode');
+                qrcodeDiv.innerHTML = '';
 
-                // Gerar novo QR code
-                qrInstance.current = new QRCode(qrRef.current, {
+                // Esconder placeholder e mostrar wrapper
+                document.getElementById('placeholder').style.display = 'none';
+                document.getElementById('qrWrapper').style.display = 'flex';
+
+                // Criar novo QR code
+                currentQRCode = new QRCode(qrcodeDiv, {
                     text: text,
                     width: size,
                     height: size,
@@ -235,98 +328,69 @@
                     correctLevel: QRCode.CorrectLevel.H
                 });
 
-                setHasQR(true);
-            };
+                // Habilitar botão de download após um pequeno delay
+                setTimeout(() => {
+                    document.getElementById('downloadBtn').disabled = false;
+                }, 100);
 
-            const downloadQR = () => {
-                const canvas = qrRef.current.querySelector('canvas');
-                if (canvas) {
-                    const url = canvas.toDataURL('image/png');
-                    const link = document.createElement('a');
-                    link.download = 'qrcode.png';
-                    link.href = url;
-                    link.click();
-                }
-            };
-
-            return (
-                <div className="container">
-                    <h1>Gerador de QR Code</h1>
-                    
-                    <div className="input-group">
-                        <label>Texto ou URL</label>
-                        <textarea
-                            value={text}
-                            onChange={(e) => setText(e.target.value)}
-                            placeholder="Digite o texto, URL ou qualquer informação..."
-                        />
-                    </div>
-
-                    <div className="options-grid">
-                        <div className="option-item">
-                            <label>Cor do QR Code</label>
-                            <input
-                                type="color"
-                                value={qrColor}
-                                onChange={(e) => setQrColor(e.target.value)}
-                            />
-                        </div>
-
-                        <div className="option-item">
-                            <label>Cor de Fundo</label>
-                            <input
-                                type="color"
-                                value={bgColor}
-                                onChange={(e) => setBgColor(e.target.value)}
-                            />
-                        </div>
-
-                        <div className="option-item">
-                            <label>Tamanho (px)</label>
-                            <input
-                                type="number"
-                                value={size}
-                                onChange={(e) => setSize(Math.max(128, Math.min(512, e.target.value)))}
-                                min="128"
-                                max="512"
-                            />
-                        </div>
-                    </div>
-
-                    <div className="button-group">
-                        <button className="btn-generate" onClick={generateQR}>
-                            ✨ Gerar QR Code
-                        </button>
-                        <button 
-                            className="btn-download" 
-                            onClick={downloadQR}
-                            disabled={!hasQR}
-                        >
-                            📥 Baixar PNG
-                        </button>
-                    </div>
-
-                    <div className="qr-preview">
-                        {!hasQR ? (
-                            <div className="placeholder">
-                                <div className="placeholder-icon">📱</div>
-                                <p>Seu QR Code aparecerá aqui</p>
-                            </div>
-                        ) : (
-                            <div className="qr-code-wrapper">
-                                <div ref={qrRef}></div>
-                            </div>
-                        )}
-                    </div>
-
-                    <div className="footer">
-                        Desenvolvido com Iassine Iahaia • Totalmente gratuito e privado
-                    </div>
-                </div>
-            );
+            } catch (error) {
+                console.error('Erro ao gerar QR code:', error);
+                showAlert('Erro ao gerar QR code. Tente novamente.');
+                document.getElementById('placeholder').style.display = 'block';
+                document.getElementById('qrWrapper').style.display = 'none';
+            }
         }
 
-        ReactDOM.render(<QRCodeGenerator />, document.getElementById('root'));
+        function downloadQR() {
+            try {
+                // Tentar pegar o canvas primeiro
+                let canvas = document.querySelector('#qrcode canvas');
+                
+                // Se não tiver canvas, tentar pegar a imagem
+                if (!canvas) {
+                    const img = document.querySelector('#qrcode img');
+                    if (!img) {
+                        showAlert('QR Code não encontrado. Gere um QR code primeiro.');
+                        return;
+                    }
+                    
+                    // Criar canvas a partir da imagem
+                    canvas = document.createElement('canvas');
+                    canvas.width = img.width;
+                    canvas.height = img.height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(img, 0, 0);
+                }
+
+                // Fazer download
+                const url = canvas.toDataURL('image/png');
+                const link = document.createElement('a');
+                link.download = 'qrcode.png';
+                link.href = url;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+
+            } catch (error) {
+                console.error('Erro ao fazer download:', error);
+                showAlert('Erro ao fazer download. Tente gerar o QR code novamente.');
+            }
+        }
+
+        // Permitir gerar QR code com Ctrl+Enter
+        document.getElementById('textInput').addEventListener('keydown', function(e) {
+            if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
+                e.preventDefault();
+                generateQR();
+            }
+        });
+
+        // Verificar se a biblioteca está carregada ao carregar a página
+        window.addEventListener('load', function() {
+            if (typeof QRCode === 'undefined') {
+                showAlert('Aviso: Biblioteca não carregada. Verifique sua conexão com a internet para gerar QR codes.');
+            }
+        });
     </script>
 </body>
 </html>
