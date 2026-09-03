@@ -1,0 +1,598 @@
+<!DOCTYPE html><html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Analytics do QR Code - QR Generator Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "background": "#011521",
+                        "on-error-container": "#ffdad6",
+                        "surface-tint": "#ffb59e",
+                        "on-secondary-fixed-variant": "#004e5a",
+                        "on-primary-container": "#521300",
+                        "secondary-fixed-dim": "#2fd9f4",
+                        "surface-container": "#0d222e",
+                        "surface-dim": "#011521",
+                        "surface": "#011521",
+                        "on-secondary": "#00363e",
+                        "error": "#ffb4ab",
+                        "primary": "#ffb59e",
+                        "on-secondary-fixed": "#001f25",
+                        "secondary-container": "#00cbe6",
+                        "on-background": "#d1e5f6",
+                        "tertiary": "#45dfa4",
+                        "secondary": "#5de6ff",
+                        "surface-bright": "#283b49",
+                        "surface-container-low": "#091e2a",
+                        "surface-container-high": "#192c39",
+                        "on-tertiary-container": "#003120",
+                        "on-primary-fixed": "#3a0b00",
+                        "on-primary": "#5e1700",
+                        "on-tertiary-fixed-variant": "#005137",
+                        "tertiary-fixed-dim": "#45dfa4",
+                        "on-surface": "#d1e5f6",
+                        "primary-container": "#ff571a",
+                        "secondary-fixed": "#a2eeff",
+                        "inverse-on-surface": "#1f333f",
+                        "surface-container-highest": "#243744",
+                        "error-container": "#93000a",
+                        "outline-variant": "#5c4037",
+                        "on-surface-variant": "#e6beb2",
+                        "on-primary-fixed-variant": "#852400",
+                        "tertiary-fixed": "#68fcbf",
+                        "on-tertiary-fixed": "#002114",
+                        "primary-fixed-dim": "#ffb59e",
+                        "tertiary-container": "#00a574",
+                        "on-error": "#690005",
+                        "outline": "#ad897e",
+                        "primary-fixed": "#ffdbd0",
+                        "surface-container-lowest": "#00101b",
+                        "on-secondary-container": "#00515d",
+                        "inverse-surface": "#d1e5f6",
+                        "inverse-primary": "#ae3200",
+                        "on-tertiary": "#003825",
+                        "surface-variant": "#243744"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "stack-sm": "8px",
+                        "stack-lg": "32px",
+                        "stack-md": "16px",
+                        "gutter": "24px",
+                        "margin-mobile": "16px",
+                        "container-max": "1280px"
+                    },
+                    "fontFamily": {
+                        "headline-md": ["Inter"],
+                        "display-lg": ["Inter"],
+                        "body-lg": ["Inter"],
+                        "title-sm": ["Inter"],
+                        "label-md": ["Inter"],
+                        "mono-data": ["JetBrains Mono"],
+                        "body-md": ["Inter"],
+                        "caption": ["Inter"],
+                        "headline-lg": ["Inter"]
+                    },
+                    "fontSize": {
+                        "headline-md": ["24px", { "lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+                        "display-lg": ["40px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+                        "body-lg": ["16px", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "title-sm": ["18px", { "lineHeight": "1.4", "fontWeight": "600" }],
+                        "label-md": ["13px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "mono-data": ["13px", { "lineHeight": "1.5", "fontWeight": "500" }],
+                        "body-md": ["14px", { "lineHeight": "1.5", "fontWeight": "400" }],
+                        "caption": ["11px", { "lineHeight": "1.4", "fontWeight": "500" }],
+                        "headline-lg": ["32px", { "lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        body {
+            background-color: #00121F;
+        }
+        
+        /* Blur orbs */
+        .blur-orb-1 {
+            position: fixed; top: -10%; right: -5%; width: 40vw; height: 40vw;
+            border-radius: 50%; background: radial-gradient(circle, rgba(255, 77, 0, 0.08) 0%, rgba(0, 18, 31, 0) 70%);
+            z-index: -1; pointer-events: none;
+        }
+        .blur-orb-2 {
+            position: fixed; bottom: -10%; left: -5%; width: 50vw; height: 50vw;
+            border-radius: 50%; background: radial-gradient(circle, rgba(6, 40, 63, 0.4) 0%, rgba(0, 18, 31, 0) 70%);
+            z-index: -1; pointer-events: none;
+        }
+
+        /* Glassmorphism utility */
+        .glass-panel {
+            background: rgba(6, 40, 63, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(92, 64, 55, 0.3);
+        }
+
+        /* Chart grids */
+        .chart-grid {
+            background-image: 
+                linear-gradient(to right, rgba(92, 64, 55, 0.1) 1px, transparent 1px),
+                linear-gradient(to bottom, rgba(92, 64, 55, 0.1) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+    </style>
+</head>
+<body class="text-on-background min-h-screen font-body-md overflow-x-hidden">
+<!-- Atmospheric Orbs -->
+<div class="blur-orb-1"></div>
+<div class="blur-orb-2"></div>
+<!-- SideNavBar (Shared Component) -->
+<nav class="bg-surface dark:bg-surface w-[248px] h-screen fixed left-0 top-0 border-r border-outline-variant flat no shadows hidden md:flex flex-col p-stack-md gap-stack-md z-50">
+<div class="mb-stack-lg flex items-center gap-3 px-2">
+<div class="w-8 h-8 rounded bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-lg" data-icon="qr_code_scanner">qr_code_scanner</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface leading-none text-base">QR Generator Pro</h1>
+<p class="font-caption text-caption text-on-surface-variant">Premium SaaS</p>
+</div>
+</div>
+<button class="w-full bg-primary-container text-white rounded-lg py-2 font-label-md text-label-md mb-stack-md flex items-center justify-center gap-2 hover:opacity-90 transition-opacity">
+<span class="material-symbols-outlined text-sm">add</span>
+            + Criar QR Code
+        </button>
+<div class="flex-1 flex flex-col gap-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="dashboard">dashboard</span>
+<span class="font-label-md text-label-md">Painel</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-surface-container-highest text-primary font-bold transition-transform scale-95" href="#">
+<span class="material-symbols-outlined" data-icon="qr_code_2" data-weight="fill" style="font-variation-settings: 'FILL' 1;">qr_code_2</span>
+<span class="font-label-md text-label-md">Meus QR Codes</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="insights">insights</span>
+<span class="font-label-md text-label-md">Analytics</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="folder">folder</span>
+<span class="font-label-md text-label-md">Pastas</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="language">language</span>
+<span class="font-label-md text-label-md">Dominios</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="groups">groups</span>
+<span class="font-label-md text-label-md">Equipe</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined" data-icon="settings">settings</span>
+<span class="font-label-md text-label-md">Configuracoes</span>
+</a>
+</div>
+<div class="mt-auto pt-stack-md border-t border-outline-variant">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200" href="#">
+<span class="material-symbols-outlined text-primary-container" data-icon="auto_awesome">auto_awesome</span>
+<span class="font-label-md text-label-md">Fazer upgrade</span>
+</a>
+</div>
+</nav>
+<!-- TopNavBar (Shared Component) -->
+<header class="bg-surface/72 backdrop-blur-md dark:bg-surface/72 h-[64px] fixed top-0 right-0 left-0 md:left-[248px] z-40 border-b border-outline-variant flat no shadows flex justify-between items-center px-gutter w-full md:w-[calc(100%-248px)]">
+<div class="flex items-center gap-4">
+<button class="md:hidden text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="relative hidden md:block">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-sm">search</span>
+<input class="bg-[#00121F] border border-outline-variant rounded-full py-1.5 pl-9 pr-4 text-sm text-on-surface focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container/20 w-64 transition-all" placeholder="Buscar..." type="text">
+</div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors Focus: ring-1 ring-primary-container rounded-full p-1">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors Focus: ring-1 ring-primary-container rounded-full p-1 hidden sm:block">
+<span class="material-symbols-outlined" data-icon="apps">apps</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-bright border border-outline-variant overflow-hidden cursor-pointer">
+<img alt="User Avatar" class="w-full h-full object-cover" data-alt="A professional studio portrait of a young tech worker with short dark hair, wearing a sleek black turtleneck. The lighting is moody and cinematic, with a subtle rim light separating the subject from a dark, out-of-focus background. High-quality corporate headshot aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBTVTrrpPV4t2LqdrD70M1A2FFXdPbAs49UqWjJDduX7LP3Bo0Sls7dqZJY-chtvXJAL-UyqpMnl3r9OEvI5646kOCvc0rrk55q7IrjezIe0H6HiZHCsYM-Wl9iNOGZLQkru_QA-o6LUFPfFNPTbM70TVRRJpMkSD6z-4p_1CquJKzANX5T7sYzLdfyOU6bW3G6Q1cwFAflgUg-edDurAPplreQesiWO79j0ime0bs6wcgjJIGnEIEQ5w">
+</div>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-[88px] pb-stack-lg px-margin-mobile md:px-gutter md:ml-[248px] max-w-container-max mx-auto w-full">
+<!-- Breadcrumb & Back -->
+<div class="flex items-center gap-2 mb-6 text-on-surface-variant font-label-md text-label-md">
+<a class="hover:text-primary flex items-center gap-1" href="#">
+<span class="material-symbols-outlined text-sm">arrow_back</span>
+                Voltar para Meus QR Codes
+            </a>
+<span>/</span>
+<span class="text-on-surface">Analytics</span>
+</div>
+<!-- Alert Strip -->
+<div class="bg-[rgba(255,87,26,0.1)] border border-primary-container rounded-lg p-3 mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary-container">warning</span>
+<span class="font-body-md text-body-md text-on-surface">Este QR Code expira em 12 dias.</span>
+</div>
+<button class="bg-primary-container/20 text-primary-container border border-primary-container/50 hover:bg-primary-container hover:text-white px-4 py-1.5 rounded-full font-label-md text-label-md transition-colors whitespace-nowrap">
+                Estender prazo
+            </button>
+</div>
+<!-- Top Section: QR Details & Status -->
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-8">
+<!-- Left: QR Info (Spans 2 cols) -->
+<div class="glass-panel rounded-xl p-6 lg:col-span-2 flex flex-col md:flex-row gap-6 items-start">
+<!-- QR Preview Tile -->
+<div class="bg-white p-3 rounded-xl shadow-lg shrink-0 w-32 h-32 md:w-40 md:h-40 flex items-center justify-center relative group">
+<img alt="QR Code" class="w-full h-full object-contain mix-blend-multiply" data-alt="A clean, high-contrast, black and white vector graphic of a QR code centered on a pure white square background. The design is crisp and precise, typical of modern scannable technology. No complex background, just the functional digital pattern." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDIybg6GjTsv20ARCfXfFimUwZDyZHHcDT99EmATJHU1nHlhmykFM05ysq82zo3hTMX0BmNfaWz-3wKI-r_ItviLu2rPhmjVfouR7HD67xrG9iL-XvdueKs9Oz1g5MoIgy6ZNAztkVei598a2ueKUYUcgZRnu4CzvVubHlKubSHwVW1HqBYhVa7yebE4VvXqOT7cf8TLmeQSpbkzT2bycyHJlv4dCvdZHe75HNFnTzKBnB5VGY6oopjXA">
+<div class="absolute inset-0 bg-black/60 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-2 backdrop-blur-sm">
+<button class="text-white hover:text-primary transition-colors p-1" title="Expandir">
+<span class="material-symbols-outlined">zoom_in</span>
+</button>
+</div>
+</div>
+<!-- Info -->
+<div class="flex-1 w-full">
+<div class="flex items-center justify-between mb-2 gap-4">
+<div class="flex items-center gap-2 group cursor-pointer w-full max-w-md">
+<h2 class="font-headline-lg text-headline-lg text-on-surface truncate">Cardápio Verão 2026</h2>
+<span class="material-symbols-outlined text-on-surface-variant opacity-0 group-hover:opacity-100 transition-opacity text-sm">edit</span>
+</div>
+<div class="hidden sm:flex items-center gap-2 bg-surface-container-high px-2 py-1 rounded-full border border-outline-variant">
+<div class="w-2 h-2 rounded-full bg-tertiary"></div>
+<span class="font-caption text-caption text-on-surface">Dinâmico</span>
+</div>
+</div>
+<div class="space-y-4">
+<!-- Links -->
+<div class="bg-[#00121F] p-3 rounded-lg border border-outline-variant">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">link</span>
+                                    Short Link
+                                </span>
+<button class="text-primary hover:text-primary-container transition-colors">
+<span class="material-symbols-outlined text-sm">content_copy</span>
+</button>
+</div>
+<p class="font-mono-data text-mono-data text-secondary-fixed break-all">qr.pro/c/verao-26</p>
+<div class="h-px w-full bg-outline-variant my-3"></div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-md text-label-md text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">public</span>
+                                    Destino
+                                </span>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<a class="font-body-md text-body-md text-on-surface hover:text-primary transition-colors break-all underline decoration-outline-variant underline-offset-4" href="#">
+                                https://restaurante.com.br/menu-verao-2026/pt/
+                            </a>
+</div>
+<!-- Meta -->
+<div class="flex flex-wrap gap-4 font-caption text-caption text-on-surface-variant">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+                                Criado em: 12 Out 2025
+                            </div>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-sm">folder</span>
+                                Pasta: <span class="text-on-surface">Restaurante Principal</span>
+</div>
+<div class="flex gap-2">
+<span class="bg-surface-container-high px-2 py-0.5 rounded-full border border-outline-variant text-on-surface">Campanha</span>
+<span class="bg-surface-container-high px-2 py-0.5 rounded-full border border-outline-variant text-on-surface">Sazonal</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Right: Status & Actions -->
+<div class="glass-panel rounded-xl p-6 flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-6">
+<span class="font-title-sm text-title-sm text-on-surface">Status</span>
+<!-- Toggle -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value="">
+<div class="w-11 h-6 bg-surface-container-highest peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-tertiary"></div>
+</label>
+</div>
+<div class="flex items-center gap-3 mb-6 bg-[rgba(69,223,164,0.1)] p-3 rounded-lg border border-[rgba(69,223,164,0.2)]">
+<span class="material-symbols-outlined text-tertiary">check_circle</span>
+<div>
+<p class="font-label-md text-label-md text-tertiary">QR Code ativo</p>
+<p class="font-caption text-caption text-on-surface-variant">Redirecionamento funcionando.</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-3">
+<button class="w-full bg-gradient-to-r from-[#FF4D00] to-[#FF8A00] text-white rounded-lg py-2.5 font-label-md text-label-md flex items-center justify-center gap-2 hover:opacity-90 transition-opacity shadow-[0_4px_14px_0_rgba(255,77,0,0.39)]">
+<span class="material-symbols-outlined text-sm">download</span>
+                        Baixar
+                    </button>
+<button class="w-full bg-[#06283F] border border-outline-variant text-on-surface rounded-lg py-2.5 font-label-md text-label-md flex items-center justify-center gap-2 hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-sm">share</span>
+                        Compartilhar
+                    </button>
+</div>
+</div>
+</div>
+<!-- KPIs Bento -->
+<div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+<div class="glass-panel rounded-xl p-5 border-t-2 border-t-secondary-container relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-secondary-container/10 rounded-full blur-xl group-hover:bg-secondary-container/20 transition-all"></div>
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Total Scans</span>
+<span class="material-symbols-outlined text-secondary-container text-sm">bar_chart</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-surface">12,408</div>
+<div class="flex items-center gap-1 mt-2 text-tertiary font-caption text-caption">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span>+14.2%</span> <span class="text-on-surface-variant">vs mês ant.</span>
+</div>
+</div>
+<div class="glass-panel rounded-xl p-5 border-t-2 border-t-primary relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-primary/10 rounded-full blur-xl group-hover:bg-primary/20 transition-all"></div>
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Scans Únicos</span>
+<span class="material-symbols-outlined text-primary text-sm">person</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-surface">8,932</div>
+<div class="flex items-center gap-1 mt-2 text-tertiary font-caption text-caption">
+<span class="material-symbols-outlined text-[14px]">trending_up</span>
+<span>+8.7%</span>
+</div>
+</div>
+<div class="glass-panel rounded-xl p-5 border-t-2 border-t-tertiary relative overflow-hidden group">
+<div class="absolute -right-4 -bottom-4 w-24 h-24 bg-tertiary/10 rounded-full blur-xl group-hover:bg-tertiary/20 transition-all"></div>
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Scans Hoje</span>
+<span class="material-symbols-outlined text-tertiary text-sm">today</span>
+</div>
+<div class="font-display-lg text-display-lg text-on-surface">342</div>
+<div class="flex items-center gap-1 mt-2 text-error font-caption text-caption">
+<span class="material-symbols-outlined text-[14px]">trending_down</span>
+<span>-2.1%</span>
+</div>
+</div>
+<div class="glass-panel rounded-xl p-5 border-t-2 border-t-[#a2eeff] relative overflow-hidden group">
+<div class="flex justify-between items-start mb-2">
+<span class="font-label-md text-label-md text-on-surface-variant">Top Dispositivo</span>
+<span class="material-symbols-outlined text-[#a2eeff] text-sm">smartphone</span>
+</div>
+<div class="font-headline-md text-headline-md text-on-surface mt-2">iPhone 14</div>
+<div class="flex items-center gap-1 mt-2 text-on-surface-variant font-caption text-caption">
+<span>iOS (68% do total)</span>
+</div>
+</div>
+</div>
+<!-- Layout Assimetrico: Charts & Table -->
+<div class="grid grid-cols-1 xl:grid-cols-3 gap-6 mb-8">
+<!-- Left Column: Main Charts (Spans 2 cols) -->
+<div class="xl:col-span-2 space-y-6">
+<!-- Area Chart: Scans por dia -->
+<div class="glass-panel rounded-xl p-6">
+<div class="flex items-center justify-between mb-6">
+<h3 class="font-title-sm text-title-sm text-on-surface">Scans por dia</h3>
+<select class="bg-[#00121F] border border-outline-variant rounded-md py-1 px-2 text-sm text-on-surface focus:outline-none focus:border-primary-container">
+<option>Últimos 30 dias</option>
+<option>Últimos 7 dias</option>
+<option>Este ano</option>
+</select>
+</div>
+<div class="h-64 w-full relative chart-grid border-l border-b border-outline-variant flex items-end">
+<!-- CSS Mock Area Chart for visual representation -->
+<div class="absolute inset-0 z-10 flex items-end" style="padding-left: 1px; padding-bottom: 1px;">
+<svg class="w-full h-full opacity-80 drop-shadow-md" preserveAspectRatio="none" viewBox="0 0 100 100">
+<defs>
+<linearGradient id="areaGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#FF571A" stop-opacity="0.4"></stop>
+<stop offset="100%" stop-color="#FF571A" stop-opacity="0.0"></stop>
+</linearGradient>
+</defs>
+<path d="M0,100 L0,70 Q10,60 20,75 T40,50 T60,30 T80,45 T100,20 L100,100 Z" fill="url(#areaGradient)"></path>
+<path d="M0,70 Q10,60 20,75 T40,50 T60,30 T80,45 T100,20" fill="none" stroke="#FF571A" stroke-linecap="round" stroke-width="2"></path>
+<!-- Tooltip dot mock -->
+<circle cx="60" cy="30" fill="#00121F" r="2" stroke="#FF571A" stroke-width="1.5"></circle>
+</svg>
+</div>
+<!-- Axis Labels -->
+<div class="absolute -bottom-6 w-full flex justify-between text-[10px] text-on-surface-variant px-2">
+<span>01/10</span>
+<span>08/10</span>
+<span>15/10</span>
+<span>22/10</span>
+<span>30/10</span>
+</div>
+<div class="absolute -left-8 h-full flex flex-col justify-between text-[10px] text-on-surface-variant py-2 items-end pr-1">
+<span>500</span>
+<span>250</span>
+<span>0</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Map Chart -->
+<div class="glass-panel rounded-xl p-6">
+<h3 class="font-title-sm text-title-sm text-on-surface mb-4">Scans por localização</h3>
+<div class="w-full h-48 bg-[#00121F] rounded-lg border border-outline-variant relative overflow-hidden flex items-center justify-center">
+<!-- Using map data-location -->
+<img alt="Map Location" class="w-full h-full object-cover opacity-60" data-alt="A stylized, dark-themed vector map of Brazil. The landmass is depicted in a deep navy blue, with states outlined by thin, subtle neon cyan borders. Certain regions are highlighted with glowing orange and teal gradient choropleth data points, indicating high activity concentrations. The overall look is technical and modern." data-location="Brazil" src="https://lh3.googleusercontent.com/aida-public/AB6AXuANY6as7FiD-PD_TI3lKfEf3yHayHklb6EhLRJU2aVe2g9ilf40Lgqx08tIqpmhS0VjpHz-CCjTQOR9TpPvSlPFq02KhNitjyDP3l4o-EG7ZlyS7FPY8b5fzp2oDw9J6ImwNFGWPXtnS2ADKsoukG5coa4bxvUeuM6PtIxrSgZbCP0f1LetvEFmD4MVLLAEMc6jUZt-7k6UdHnTkCdRYICo6LdVUwFzKbCWi2BlXOGxXtzSpWFTqG9hqA">
+<div class="absolute inset-0 bg-gradient-to-t from-[#00121F] to-transparent"></div>
+<!-- Overlay markers -->
+<div class="absolute top-1/3 left-1/2 w-3 h-3 bg-primary rounded-full shadow-[0_0_10px_#ff571a]"></div>
+<div class="absolute top-1/2 left-2/3 w-2 h-2 bg-secondary rounded-full shadow-[0_0_8px_#5de6ff]"></div>
+</div>
+<div class="mt-4 space-y-2">
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-primary"></span> São Paulo, BR</span>
+<span class="font-mono-data text-on-surface-variant">45%</span>
+</div>
+<div class="flex justify-between items-center text-sm">
+<span class="text-on-surface flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-secondary"></span> Rio de Janeiro, BR</span>
+<span class="font-mono-data text-on-surface-variant">22%</span>
+</div>
+</div>
+</div>
+<!-- Donut Chart -->
+<div class="glass-panel rounded-xl p-6">
+<h3 class="font-title-sm text-title-sm text-on-surface mb-4">Sistema Operacional</h3>
+<div class="flex items-center justify-center h-48 relative">
+<!-- SVG Donut Mock -->
+<svg class="w-32 h-32 -rotate-90" viewBox="0 0 100 100">
+<!-- Background circle -->
+<circle cx="50" cy="50" fill="transparent" r="40" stroke="#192c39" stroke-width="12"></circle>
+<!-- Segment 1: iOS -->
+<circle class="drop-shadow-md" cx="50" cy="50" fill="transparent" r="40" stroke="#FF571A" stroke-dasharray="251.2" stroke-dashoffset="80" stroke-width="12"></circle>
+<!-- Segment 2: Android -->
+<circle class="drop-shadow-md" cx="50" cy="50" fill="transparent" r="40" stroke="#00cbe6" stroke-dasharray="251.2" stroke-dashoffset="200" stroke-width="12" style="stroke-dashoffset: 180; transform-origin: center; transform: rotate(245deg);"></circle>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center pointer-events-none">
+<span class="font-headline-md text-on-surface">68%</span>
+<span class="font-caption text-on-surface-variant">iOS</span>
+</div>
+</div>
+<div class="mt-4 flex justify-center gap-4 text-sm">
+<span class="text-on-surface flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary-container"></span> iOS</span>
+<span class="text-on-surface flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary-container"></span> Android</span>
+<span class="text-on-surface flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-surface-container-high"></span> Outros</span>
+</div>
+</div>
+</div>
+<!-- Table: Últimos Scans -->
+<div class="glass-panel rounded-xl overflow-hidden">
+<div class="p-5 border-b border-outline-variant flex justify-between items-center">
+<h3 class="font-title-sm text-title-sm text-on-surface">Últimos scans</h3>
+<button class="text-primary font-label-md text-label-md hover:underline">Ver todos</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface-container/50 border-b border-outline-variant">
+<th class="p-4 font-label-md text-label-md text-on-surface-variant font-medium">Data / Hora</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant font-medium">Localização</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant font-medium">Dispositivo</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant font-medium">Navegador</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant font-medium">IP</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md divide-y divide-outline-variant/50">
+<tr class="hover:bg-surface-container-high/50 transition-colors">
+<td class="p-4 text-on-surface whitespace-nowrap">Hoje, 14:32</td>
+<td class="p-4 text-on-surface-variant">São Paulo, BR</td>
+<td class="p-4 text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-sm">phone_iphone</span> iPhone 14</td>
+<td class="p-4 text-on-surface-variant">Safari</td>
+<td class="p-4 font-mono-data text-mono-data text-on-surface-variant">192.168.1.1</td>
+</tr>
+<tr class="hover:bg-surface-container-high/50 transition-colors">
+<td class="p-4 text-on-surface whitespace-nowrap">Hoje, 13:15</td>
+<td class="p-4 text-on-surface-variant">Campinas, BR</td>
+<td class="p-4 text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-sm">smartphone</span> Galaxy S23</td>
+<td class="p-4 text-on-surface-variant">Chrome</td>
+<td class="p-4 font-mono-data text-mono-data text-on-surface-variant">172.16.254.1</td>
+</tr>
+<tr class="hover:bg-surface-container-high/50 transition-colors">
+<td class="p-4 text-on-surface whitespace-nowrap">Hoje, 11:45</td>
+<td class="p-4 text-on-surface-variant">Rio de Janeiro, BR</td>
+<td class="p-4 text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-sm">laptop_mac</span> MacBook Pro</td>
+<td class="p-4 text-on-surface-variant">Safari</td>
+<td class="p-4 font-mono-data text-mono-data text-on-surface-variant">10.0.0.12</td>
+</tr>
+<tr class="hover:bg-surface-container-high/50 transition-colors">
+<td class="p-4 text-on-surface whitespace-nowrap">Ontem, 20:10</td>
+<td class="p-4 text-on-surface-variant">Curitiba, BR</td>
+<td class="p-4 text-on-surface-variant flex items-center gap-2"><span class="material-symbols-outlined text-sm">phone_iphone</span> iPhone 12</td>
+<td class="p-4 text-on-surface-variant">Safari</td>
+<td class="p-4 font-mono-data text-mono-data text-on-surface-variant">192.168.0.100</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<!-- Right Column: Rail -->
+<div class="xl:col-span-1 space-y-6">
+<!-- Bar Chart: Scans por hora -->
+<div class="glass-panel rounded-xl p-6">
+<h3 class="font-title-sm text-title-sm text-on-surface mb-6">Scans por hora (Hoje)</h3>
+<div class="h-40 flex items-end gap-2 border-b border-outline-variant pb-2">
+<!-- Mock Bars -->
+<div class="flex-1 bg-surface-container-high hover:bg-surface-bright rounded-t-sm h-[10%] relative group transition-colors">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-1.5 py-0.5 rounded">12</div>
+</div>
+<div class="flex-1 bg-surface-container-high hover:bg-surface-bright rounded-t-sm h-[30%] relative group transition-colors"></div>
+<div class="flex-1 bg-primary/40 hover:bg-primary/60 rounded-t-sm h-[60%] relative group transition-colors"></div>
+<div class="flex-1 bg-primary-container rounded-t-sm h-[100%] relative group transition-colors shadow-[0_0_8px_rgba(255,87,26,0.4)]">
+<div class="opacity-0 group-hover:opacity-100 absolute -top-8 left-1/2 -translate-x-1/2 bg-black text-white text-[10px] px-1.5 py-0.5 rounded z-10">342</div>
+</div>
+<div class="flex-1 bg-primary/80 hover:bg-primary rounded-t-sm h-[85%] relative group transition-colors"></div>
+<div class="flex-1 bg-primary/50 hover:bg-primary/70 rounded-t-sm h-[50%] relative group transition-colors"></div>
+<div class="flex-1 bg-surface-container-high hover:bg-surface-bright rounded-t-sm h-[20%] relative group transition-colors"></div>
+<div class="flex-1 bg-surface-container-high hover:bg-surface-bright rounded-t-sm h-[15%] relative group transition-colors"></div>
+</div>
+<div class="flex justify-between text-[10px] text-on-surface-variant mt-2 px-1">
+<span>00h</span>
+<span>06h</span>
+<span>12h</span>
+<span>18h</span>
+<span>24h</span>
+</div>
+</div>
+<!-- Timeline: Histórico -->
+<div class="glass-panel rounded-xl p-6">
+<h3 class="font-title-sm text-title-sm text-on-surface mb-6">Histórico de alterações</h3>
+<div class="relative border-l border-outline-variant ml-3 space-y-6 pb-2">
+<!-- Event 1 -->
+<div class="relative pl-6">
+<div class="absolute -left-1.5 top-1 w-3 h-3 rounded-full bg-primary ring-4 ring-[#06283F]"></div>
+<div class="font-caption text-caption text-on-surface-variant mb-1">Hoje, 09:42</div>
+<div class="font-label-md text-label-md text-on-surface mb-1">Destino atualizado</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm bg-[#00121F] p-2 rounded border border-outline-variant mt-2 truncate">
+                                → https://restaurante.com.br/menu-verao-2026/pt/
+                            </p>
+</div>
+<!-- Event 2 -->
+<div class="relative pl-6">
+<div class="absolute -left-1.5 top-1 w-3 h-3 rounded-full bg-surface-bright border border-outline-variant ring-4 ring-[#06283F]"></div>
+<div class="font-caption text-caption text-on-surface-variant mb-1">Ontem, 15:20</div>
+<div class="font-label-md text-label-md text-on-surface">Design do QR modificado</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">
+                                Cor alterada para #000000 e logo adicionado.
+                            </p>
+</div>
+<!-- Event 3 -->
+<div class="relative pl-6">
+<div class="absolute -left-1.5 top-1 w-3 h-3 rounded-full bg-surface-bright border border-outline-variant ring-4 ring-[#06283F]"></div>
+<div class="font-caption text-caption text-on-surface-variant mb-1">12 Out 2025, 10:05</div>
+<div class="font-label-md text-label-md text-on-surface">QR Code Criado</div>
+<p class="font-body-md text-body-md text-on-surface-variant text-sm mt-1">
+                                Criado por João Silva na pasta "Restaurante Principal".
+                            </p>
+</div>
+</div>
+<button class="w-full mt-4 text-center text-primary font-label-md text-label-md py-2 hover:bg-surface-container-high rounded transition-colors">
+                        Ver histórico completo
+                    </button>
+</div>
+</div>
+</div>
+</main>
+</body></html>

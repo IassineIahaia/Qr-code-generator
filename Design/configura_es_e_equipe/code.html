@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Configurações - QR Generator Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#d1e5f6",
+                    "on-tertiary-container": "#003120",
+                    "secondary": "#5de6ff",
+                    "surface-dim": "#011521",
+                    "surface-container": "#0d222e",
+                    "surface-bright": "#283b49",
+                    "secondary-fixed": "#a2eeff",
+                    "on-error": "#690005",
+                    "outline": "#ad897e",
+                    "background": "#011521",
+                    "primary": "#ffb59e",
+                    "tertiary-fixed": "#68fcbf",
+                    "on-primary-fixed-variant": "#852400",
+                    "inverse-on-surface": "#1f333f",
+                    "tertiary-container": "#00a574",
+                    "secondary-container": "#00cbe6",
+                    "primary-fixed": "#ffdbd0",
+                    "on-background": "#d1e5f6",
+                    "tertiary-fixed-dim": "#45dfa4",
+                    "error-container": "#93000a",
+                    "surface-tint": "#ffb59e",
+                    "primary-fixed-dim": "#ffb59e",
+                    "on-surface": "#d1e5f6",
+                    "surface-container-highest": "#243744",
+                    "on-secondary-fixed": "#001f25",
+                    "surface-container-high": "#192c39",
+                    "on-tertiary-fixed": "#002114",
+                    "surface-container-lowest": "#00101b",
+                    "secondary-fixed-dim": "#2fd9f4",
+                    "on-primary-fixed": "#3a0b00",
+                    "on-tertiary": "#003825",
+                    "tertiary": "#45dfa4",
+                    "on-primary-container": "#521300",
+                    "surface": "#011521",
+                    "on-secondary-container": "#00515d",
+                    "on-tertiary-fixed-variant": "#005137",
+                    "on-error-container": "#ffdad6",
+                    "error": "#ffb4ab",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "surface-variant": "#243744",
+                    "on-primary": "#5e1700",
+                    "inverse-primary": "#ae3200",
+                    "on-surface-variant": "#e6beb2",
+                    "outline-variant": "#5c4037",
+                    "surface-container-low": "#091e2a",
+                    "on-secondary": "#00363e",
+                    "primary-container": "#ff571a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "gutter": "24px",
+                    "stack-md": "16px",
+                    "stack-lg": "32px",
+                    "stack-sm": "8px",
+                    "margin-mobile": "16px",
+                    "container-max": "1280px"
+            },
+            "fontFamily": {
+                    "caption": [
+                            "Inter"
+                    ],
+                    "headline-lg": [
+                            "Inter"
+                    ],
+                    "display-lg": [
+                            "Inter"
+                    ],
+                    "body-md": [
+                            "Inter"
+                    ],
+                    "label-md": [
+                            "Inter"
+                    ],
+                    "body-lg": [
+                            "Inter"
+                    ],
+                    "mono-data": [
+                            "JetBrains Mono"
+                    ],
+                    "headline-md": [
+                            "Inter"
+                    ],
+                    "title-sm": [
+                            "Inter"
+                    ]
+            },
+            "fontSize": {
+                    "caption": [
+                            "11px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-lg": [
+                            "32px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "display-lg": [
+                            "40px",
+                            {
+                                    "lineHeight": "1.2",
+                                    "letterSpacing": "-0.02em",
+                                    "fontWeight": "700"
+                            }
+                    ],
+                    "body-md": [
+                            "14px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "label-md": [
+                            "13px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "body-lg": [
+                            "16px",
+                            {
+                                    "lineHeight": "1.6",
+                                    "fontWeight": "400"
+                            }
+                    ],
+                    "mono-data": [
+                            "13px",
+                            {
+                                    "lineHeight": "1.5",
+                                    "fontWeight": "500"
+                            }
+                    ],
+                    "headline-md": [
+                            "24px",
+                            {
+                                    "lineHeight": "1.3",
+                                    "letterSpacing": "-0.01em",
+                                    "fontWeight": "600"
+                            }
+                    ],
+                    "title-sm": [
+                            "18px",
+                            {
+                                    "lineHeight": "1.4",
+                                    "fontWeight": "600"
+                            }
+                    ]
+            }
+    },
+        },
+      }
+    </script>
+<style>
+        body {
+            background-color: theme('colors.background');
+            color: theme('colors.on-background');
+        }
+        .bg-blur-ambient {
+            background: radial-gradient(circle at top right, rgba(255,77,0,0.08), transparent 40%),
+                        radial-gradient(circle at bottom left, rgba(6,40,63,0.3), transparent 40%);
+        }
+    </style>
+</head>
+<body class="min-h-screen flex w-full bg-blur-ambient antialiased">
+<!-- Ambient background -->
+<div class="fixed inset-0 pointer-events-none z-[-1]"></div>
+<!-- SideNavBar (Desktop) -->
+<aside class="hidden md:flex flex-col p-stack-md gap-stack-sm bg-surface-container-lowest dark:bg-surface-container-lowest fixed h-full w-[260px] left-0 top-0 border-r border-outline-variant dark:border-outline-variant z-50">
+<div class="flex items-center gap-4 mb-8 p-2">
+<div class="w-10 h-10 rounded bg-primary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-on-primary-container" style="font-variation-settings: 'FILL' 1;">qr_code</span>
+</div>
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-primary dark:text-primary">QR Gen Pro</h1>
+<p class="font-caption text-caption text-on-surface-variant">Enterprise Plan</p>
+</div>
+</div>
+<nav class="flex-1 flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+                Dashboard
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">analytics</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">qr_code_2</span>
+                QR Codes
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">payments</span>
+                Billing
+            </a>
+<!-- Active State -->
+<a class="flex items-center gap-3 px-3 py-2 font-body-md text-body-md bg-surface-container-high dark:bg-surface-container-high text-primary font-semibold rounded-lg" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">settings</span>
+                Settings
+            </a>
+</nav>
+<div class="mt-auto flex flex-col gap-1">
+<button class="w-full py-2 px-4 mb-4 bg-gradient-to-r from-[#FF4D00] to-[#FF8A00] text-white font-label-md text-label-md rounded-xl hover:opacity-90 transition-opacity flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">add</span>
+                Create New QR
+            </button>
+<a class="flex items-center gap-3 px-3 py-2 font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">help</span>
+                Help Center
+            </a>
+<a class="flex items-center gap-3 px-3 py-2 font-body-md text-body-md text-on-surface-variant dark:text-on-surface-variant hover:bg-surface-container dark:hover:bg-surface-container transition-colors rounded-lg" href="#">
+<span class="material-symbols-outlined">logout</span>
+                Log Out
+            </a>
+</div>
+</aside>
+<!-- Main Content Area -->
+<main class="flex-1 ml-0 md:ml-[260px] flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="flex justify-between items-center px-gutter w-full z-40 fixed top-0 right-0 left-0 md:left-[260px] h-[64px] bg-surface/72 dark:bg-surface/72 backdrop-blur-xl border-b border-outline-variant dark:border-outline-variant">
+<div class="flex items-center gap-4">
+<!-- Mobile Menu Button -->
+<button class="md:hidden text-on-surface">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="font-title-sm text-title-sm font-bold text-on-surface dark:text-on-surface hidden md:block">
+                    Configurações
+                </div>
+</div>
+<div class="flex items-center gap-4">
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="text-on-surface-variant hover:text-primary transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+<div class="w-8 h-8 rounded-full bg-surface-variant border border-outline-variant overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="A small, professional headshot of an individual used as a user profile avatar. Dark, minimalist aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDF142aMAetM5hNPRVJ7R_WmDTf1eyQgZXC5ZwunGePqOgIIilqVZ91bo-QOqHn1qogJ5kzLJZ1-WbuygDPtUNLkUZZXJoxIq7CIQS3CT0EQ_9-pVTqXoDQi5kEXHbnaydsGHBx8gQpCX9JsaAyEgBckSXT3OtTs6jjru99PF8l8w_F8M_zbCAep54_rYLPXTM6G-N5eF02syOqtsnk5-IIh86AKuvRQYszEWcWjzNNTzl2pkeW6iVzCQ"/>
+</div>
+</div>
+</header>
+<!-- Content Canvas -->
+<div class="flex-1 mt-[64px] p-gutter max-w-container-max mx-auto w-full flex flex-col md:flex-row gap-gutter">
+<!-- Secondary Navigation (Settings Tabs) -->
+<aside class="w-full md:w-64 shrink-0 border-b md:border-b-0 md:border-r border-outline-variant/30 pb-4 md:pb-0 md:pr-4">
+<nav class="flex md:flex-col gap-1 overflow-x-auto md:overflow-visible pb-2 md:pb-0">
+<a class="px-3 py-2 font-body-md text-body-md text-on-surface-variant hover:bg-surface-container rounded-lg whitespace-nowrap transition-colors" href="#">
+                        Geral
+                    </a>
+<a class="px-3 py-2 font-body-md text-body-md bg-surface-container-high text-primary font-semibold rounded-lg whitespace-nowrap" href="#">
+                        Domínios
+                    </a>
+<a class="px-3 py-2 font-body-md text-body-md text-on-surface-variant hover:bg-surface-container rounded-lg whitespace-nowrap transition-colors" href="#">
+                        Equipe
+                    </a>
+<a class="px-3 py-2 font-body-md text-body-md text-on-surface-variant hover:bg-surface-container rounded-lg whitespace-nowrap transition-colors" href="#">
+                        Faturamento
+                    </a>
+<a class="px-3 py-2 font-body-md text-body-md text-on-surface-variant hover:bg-surface-container rounded-lg whitespace-nowrap transition-colors" href="#">
+                        API &amp; Webhooks
+                    </a>
+</nav>
+</aside>
+<!-- Settings Sections -->
+<div class="flex-1 flex flex-col gap-stack-lg max-w-4xl">
+<!-- Domínios Section -->
+<section class="flex flex-col gap-stack-md">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Domínios Personalizados</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Gerencie os domínios usados para seus links curtos e QR Codes.</p>
+</div>
+<button class="bg-surface-container-high border border-outline-variant text-on-surface font-label-md text-label-md px-4 py-2 rounded-xl hover:bg-surface-bright transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add</span>
+                            Adicionar domínio
+                        </button>
+</div>
+<div class="bg-[#001A2E] border border-outline-variant/50 rounded-xl overflow-hidden">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="border-b border-outline-variant/30 bg-surface-container/50">
+<th class="p-4 font-label-md text-label-md text-on-surface-variant">Domínio</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant">Status</th>
+<th class="p-4 font-label-md text-label-md text-on-surface-variant text-right">Ações</th>
+</tr>
+</thead>
+<tbody class="font-body-md text-body-md">
+<tr class="border-b border-outline-variant/30 hover:bg-surface-container-high/30 transition-colors">
+<td class="p-4 font-mono-data text-mono-data text-on-surface">qrpro.link</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-tertiary-container/15 text-tertiary text-[11px] font-medium tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+                                            Verificado
+                                        </span>
+</td>
+<td class="p-4 text-right">
+<button class="text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+<tr class="hover:bg-surface-container-high/30 transition-colors">
+<td class="p-4 font-mono-data text-mono-data text-on-surface">menu.suamarca.com.br</td>
+<td class="p-4">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-primary-container/15 text-primary text-[11px] font-medium tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                                            Pendente
+                                        </span>
+</td>
+<td class="p-4 text-right">
+<button class="text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- DNS Instructions -->
+<div class="bg-surface-container-low border border-outline-variant/30 rounded-xl p-4 mt-2">
+<div class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-0.5">info</span>
+<div>
+<h3 class="font-label-md text-label-md text-on-surface mb-2">Configuração de DNS (CNAME)</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-4">Para domínios pendentes, adicione o seguinte registro CNAME no painel do seu provedor de domínio (ex: Cloudflare, Registro.br).</p>
+<div class="bg-background border border-outline-variant/30 rounded-lg p-3 flex items-center justify-between font-mono-data text-mono-data text-on-surface-variant text-sm">
+<span>cname.qrgenerator.pro</span>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors" title="Copiar">
+<span class="material-symbols-outlined text-[18px]">content_copy</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<hr class="border-outline-variant/20"/>
+<!-- Equipe Section -->
+<section class="flex flex-col gap-stack-md">
+<div class="flex justify-between items-end">
+<div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Equipe</h2>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">Gerencie os membros com acesso ao seu workspace.</p>
+</div>
+<button class="bg-surface-container-high border border-outline-variant text-on-surface font-label-md text-label-md px-4 py-2 rounded-xl hover:bg-surface-bright transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">person_add</span>
+                            Convidar membro
+                        </button>
+</div>
+<div class="flex flex-col gap-2">
+<!-- Member Item -->
+<div class="flex items-center justify-between p-4 bg-[#001A2E] border border-outline-variant/30 rounded-xl hover:border-outline-variant/60 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden">
+<img alt="João Silva" class="w-full h-full object-cover" data-alt="A high-quality profile picture of a professional in a dark, minimalist setting, representing the workspace owner." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXPwnIVnXyph8dri4nhuHOxdSk5S50fv7AGaD3H9bDRPwub2p3mLYVl6F7pTWPJzhszRDL2o5AVdiMwGKSlq8i1MtwePPJaDo9ziMqAJDLqv5p5Zux1kbme8tzqbsq31fEX_A7QwPWMZlDMNkztzfOxtQbCJuvFUplPbLNQ035xusrFewQS3jzA0UoAMV8luz-TbZPOPZd0-Kj3uBbfEQDQCO8wxtBM6-E_9aZNnD_7E6xqtni3e5nXg"/>
+</div>
+<div>
+<div class="font-title-sm text-title-sm text-on-surface flex items-center gap-2">
+                                        João Silva
+                                        <span class="px-2 py-0.5 rounded text-[10px] uppercase font-bold bg-surface-container text-on-surface-variant border border-outline-variant/50">Você</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface-variant">joao@suamarca.com.br</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-label-md text-label-md text-on-surface-variant">Proprietário</span>
+<button class="text-on-surface-variant hover:text-on-surface invisible">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+<!-- Member Item -->
+<div class="flex items-center justify-between p-4 bg-[#001A2E] border border-outline-variant/30 rounded-xl hover:border-outline-variant/60 transition-colors">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-high border border-outline-variant/50 flex items-center justify-center text-on-surface-variant font-title-sm">
+                                    MC
+                                </div>
+<div>
+<div class="font-title-sm text-title-sm text-on-surface">Maria Costa</div>
+<div class="font-body-md text-body-md text-on-surface-variant">maria@suamarca.com.br</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<span class="font-label-md text-label-md text-on-surface-variant">Editor</span>
+<button class="text-on-surface-variant hover:text-on-surface">
+<span class="material-symbols-outlined">more_vert</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+</div>
+</div>
+<!-- Footer -->
+<footer class="w-full py-stack-lg border-t border-outline-variant/30 mt-auto">
+<div class="max-w-container-max mx-auto flex justify-between items-center px-margin-mobile md:px-gutter">
+<p class="font-caption text-caption text-on-surface-variant">© 2024 QR Generator Pro. All rights reserved.</p>
+<div class="flex gap-4">
+<a class="font-caption text-caption text-on-surface-variant hover:text-on-surface transition-colors" href="#">Privacy Policy</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-on-surface transition-colors" href="#">Terms of Service</a>
+<a class="font-caption text-caption text-on-surface-variant hover:text-on-surface transition-colors" href="#">API Docs</a>
+</div>
+</div>
+</footer>
+</main>
+</body></html>

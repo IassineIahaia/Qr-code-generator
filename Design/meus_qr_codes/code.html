@@ -1,0 +1,791 @@
+<!DOCTYPE html><html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Meus QR Codes - QR Generator Pro</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet">
+<!-- Material Icons -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config injected from system prompt -->
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "on-secondary-fixed": "#001f25",
+                      "surface-container-lowest": "#00101b",
+                      "on-tertiary-fixed-variant": "#005137",
+                      "on-primary-fixed-variant": "#852400",
+                      "error": "#ffb4ab",
+                      "on-primary-container": "#521300",
+                      "secondary-fixed-dim": "#2fd9f4",
+                      "on-error": "#690005",
+                      "surface": "#011521",
+                      "on-primary": "#5e1700",
+                      "surface-variant": "#243744",
+                      "outline-variant": "#5c4037",
+                      "tertiary-container": "#00a574",
+                      "on-secondary-fixed-variant": "#004e5a",
+                      "on-surface-variant": "#e6beb2",
+                      "on-tertiary-container": "#003120",
+                      "outline": "#ad897e",
+                      "on-background": "#d1e5f6",
+                      "surface-tint": "#ffb59e",
+                      "primary-fixed": "#ffdbd0",
+                      "secondary-container": "#00cbe6",
+                      "on-error-container": "#ffdad6",
+                      "surface-container-highest": "#243744",
+                      "surface-container": "#0d222e",
+                      "primary-fixed-dim": "#ffb59e",
+                      "on-primary-fixed": "#3a0b00",
+                      "on-tertiary": "#003825",
+                      "secondary": "#5de6ff",
+                      "inverse-surface": "#d1e5f6",
+                      "primary": "#ffb59e",
+                      "on-secondary-container": "#00515d",
+                      "inverse-primary": "#ae3200",
+                      "on-secondary": "#00363e",
+                      "surface-bright": "#283b49",
+                      "surface-container-low": "#091e2a",
+                      "surface-dim": "#011521",
+                      "on-surface": "#d1e5f6",
+                      "secondary-fixed": "#a2eeff",
+                      "tertiary": "#45dfa4",
+                      "inverse-on-surface": "#1f333f",
+                      "primary-container": "#ff571a",
+                      "tertiary-fixed-dim": "#45dfa4",
+                      "tertiary-fixed": "#68fcbf",
+                      "background": "#011521",
+                      "error-container": "#93000a",
+                      "surface-container-high": "#192c39",
+                      "on-tertiary-fixed": "#002114"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "stack-lg": "32px",
+                      "stack-md": "16px",
+                      "stack-sm": "8px",
+                      "gutter": "24px",
+                      "margin-mobile": "16px",
+                      "container-max": "1280px"
+              },
+              "fontFamily": {
+                      "label-md": [
+                              "Inter"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "title-sm": [
+                              "Inter"
+                      ],
+                      "caption": [
+                              "Inter"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "display-lg": [
+                              "Inter"
+                      ],
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "mono-data": [
+                              "JetBrains Mono"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "label-md": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "letterSpacing": "-0.01em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "title-sm": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "caption": [
+                              "11px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "display-lg": [
+                              "40px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "mono-data": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-lg": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+      </script>
+<style>
+        .material-symbols-outlined {
+          font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        
+        /* Ambient Background Orbs */
+        .ambient-orb-1 {
+            background: radial-gradient(circle, rgba(255, 77, 0, 0.08) 0%, transparent 70%);
+        }
+        .ambient-orb-2 {
+            background: radial-gradient(circle, rgba(6, 40, 63, 0.4) 0%, transparent 70%);
+        }
+
+        /* Glassmorphism utilities */
+        .glass-panel {
+            background: rgba(6, 40, 63, 0.72);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        /* Gradient Text */
+        .text-gradient {
+            background: linear-gradient(135deg, #FF4D00 0%, #FF8A00 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Primary Button Gradient */
+        .btn-primary {
+            background: linear-gradient(135deg, #FF4D00 0%, #FF8A00 100%);
+            color: white;
+            transition: opacity 0.2s;
+        }
+        .btn-primary:hover {
+            opacity: 0.9;
+        }
+
+        /* Hairline borders */
+        .border-hairline {
+            border-color: rgba(255, 255, 255, 0.08);
+        }
+        
+        .border-b-hairline {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        /* Sparkline SVG minimal styling */
+        .sparkline-path {
+            fill: none;
+            stroke: #45dfa4; /* tertiary color */
+            stroke-width: 1.5;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Toggle Switch */
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #FF4D00;
+        }
+        .toggle-checkbox:checked + .toggle-label {
+            background: linear-gradient(135deg, #FF4D00 0%, #FF8A00 100%);
+        }
+        
+        /* Table Row Hover Lift */
+        .table-row-hover {
+            transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s;
+        }
+        .table-row-hover:hover {
+            transform: translateY(-1px);
+            background-color: #06283F; /* surface_elevated */
+            z-index: 10;
+            position: relative;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-surface font-body-md min-h-screen overflow-x-hidden selection:bg-primary-container selection:text-white">
+<!-- Ambient Orbs -->
+<div class="fixed top-0 left-0 w-[800px] h-[800px] ambient-orb-1 -translate-x-1/2 -translate-y-1/2 pointer-events-none z-0"></div>
+<div class="fixed bottom-0 right-0 w-[1000px] h-[1000px] ambient-orb-2 translate-x-1/4 translate-y-1/4 pointer-events-none z-0"></div>
+<!-- SideNavBar -->
+<nav class="hidden md:flex flex-col p-stack-md gap-stack-md bg-surface dark:bg-surface w-[248px] h-screen fixed left-0 top-0 border-r border-outline-variant z-40">
+<!-- Brand Header -->
+<div class="flex items-center gap-3 px-3 py-4 mb-4">
+<div class="w-8 h-8 rounded-lg bg-primary-container flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-white text-[20px]" data-icon="qr_code_scanner" style="font-variation-settings: 'FILL' 1;">qr_code_scanner</span>
+</div>
+<div class="flex flex-col">
+<span class="font-headline-md text-headline-md font-bold text-on-surface text-[15px] leading-tight">QR Generator Pro</span>
+<span class="font-caption text-caption text-on-surface-variant">Premium SaaS</span>
+</div>
+</div>
+<!-- Navigation Tabs -->
+<div class="flex flex-col gap-1 flex-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined group-hover:text-on-surface transition-colors" data-icon="dashboard">dashboard</span>
+                Painel
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-surface-container-highest text-primary font-bold hover:bg-surface-container-high transition-colors duration-200 font-label-md text-label-md Active: scale-95 transition-transform" href="#" style="transform: scale(1);">
+<span class="material-symbols-outlined" data-icon="qr_code_2" style="font-variation-settings: 'FILL' 1;">qr_code_2</span>
+                Meus QR Codes
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined group-hover:text-on-surface transition-colors" data-icon="insights">insights</span>
+                Analytics
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined group-hover:text-on-surface transition-colors" data-icon="folder">folder</span>
+                Pastas
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined group-hover:text-on-surface transition-colors" data-icon="language">language</span>
+                Dominios
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined group-hover:text-on-surface transition-colors" data-icon="groups">groups</span>
+                Equipe
+            </a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 font-label-md text-label-md group mt-auto" href="#">
+<span class="material-symbols-outlined group-hover:text-on-surface transition-colors" data-icon="settings">settings</span>
+                Configuracoes
+            </a>
+</div>
+<!-- CTA & Footer -->
+<div class="mt-4 pt-4 border-t border-outline-variant flex flex-col gap-3">
+<button class="btn-primary w-full py-2.5 rounded-lg font-label-md text-label-md flex items-center justify-center gap-2">
+                + Criar QR Code
+            </button>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors duration-200 font-label-md text-label-md group" href="#">
+<span class="material-symbols-outlined text-[#FFD700] group-hover:drop-shadow-[0_0_8px_rgba(255,215,0,0.5)] transition-all" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+                Fazer upgrade
+            </a>
+</div>
+</nav>
+<!-- TopNavBar -->
+<header class="hidden md:flex justify-between items-center px-gutter w-full bg-surface/72 backdrop-blur-md dark:bg-surface/72 h-[64px] fixed top-0 right-0 md:w-[calc(100%-248px)] z-30 border-b border-outline-variant transition-all duration-300">
+<!-- Search Area (Left per specs) -->
+<div class="flex-1 max-w-md">
+<div class="relative group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors text-[20px]" data-icon="search">search</span>
+<input class="w-full bg-[#00121F] border border-hairline rounded-lg py-2 pl-10 pr-4 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-[#FF4D00]/50 focus:ring-1 focus:ring-[#FF4D00]/30 transition-all shadow-inner" placeholder="Buscar / Pular para..." type="text">
+<div class="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1">
+<kbd class="hidden sm:inline-block px-1.5 py-0.5 rounded border border-hairline bg-[#06283F] font-mono-data text-[10px] text-on-surface-variant">⌘</kbd>
+<kbd class="hidden sm:inline-block px-1.5 py-0.5 rounded border border-hairline bg-[#06283F] font-mono-data text-[10px] text-on-surface-variant">K</kbd>
+</div>
+</div>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-2 pl-4">
+<button class="p-2 rounded-full text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors focus:ring-1 focus:ring-primary-container outline-none" title="Notificações">
+<div class="relative">
+<span class="material-symbols-outlined" data-icon="notifications">notifications</span>
+<span class="absolute top-0.5 right-0.5 w-2 h-2 bg-[#FF4D00] rounded-full border border-surface"></span>
+</div>
+</button>
+<button class="p-2 rounded-full text-on-surface-variant hover:text-primary hover:bg-surface-container-high transition-colors focus:ring-1 focus:ring-primary-container outline-none hidden sm:block" title="Apps">
+<span class="material-symbols-outlined" data-icon="apps">apps</span>
+</button>
+<div class="h-6 w-px bg-outline-variant/50 mx-2 hidden sm:block"></div>
+<button class="flex items-center gap-2 p-1 pr-2 rounded-full hover:bg-surface-container-high transition-colors border border-transparent hover:border-hairline focus:ring-1 focus:ring-primary-container outline-none">
+<img alt="User Avatar" class="w-8 h-8 rounded-full object-cover border border-hairline" data-alt="A small, circular avatar portrait of a professional user, clean lighting, high resolution, dark mode compatible background. Corporate minimal style." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBnshJO5wJgyIyJdArDJAtCPcWOt3jfQdxH39NOwGrgxqDs7BGgm6A0pVRVc-iquJ1HoMj9LxF-0Ak4fza26rgPkTzaRiFGL9HoB5D3khathMAuinNkTVEyUjsJhTxwsMYyuMkb7wj_3Dkar631myOskJJ4aBc6FryJQAwAAFiNF04B04Rx3C4BMMuCGHfmmSMyQ3V6ocLG28YLBzmcnWIL_j4bgKgH4y-8ty75XTZxqfAXgHhWe2uI_w">
+<span class="material-symbols-outlined text-on-surface-variant text-[18px]" data-icon="expand_more">expand_more</span>
+</button>
+</div>
+</header>
+<!-- Main Content Area -->
+<main class="md:ml-[248px] pt-[88px] px-margin-mobile md:px-gutter pb-32 max-w-container-max mx-auto relative z-10 flex flex-col gap-6">
+<!-- Page Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Meus QR Codes</h1>
+<div class="px-2.5 py-1 rounded-full bg-surface-container-high border border-hairline flex items-center">
+<span class="font-mono-data text-mono-data text-on-surface-variant text-[12px]">42 códigos</span>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<div class="flex bg-surface-container-low rounded-lg p-1 border border-hairline">
+<button class="p-1.5 rounded bg-surface-elevated text-primary shadow-sm" title="Visualização em Lista">
+<span class="material-symbols-outlined text-[20px]" data-icon="view_list">view_list</span>
+</button>
+<button class="p-1.5 rounded text-on-surface-variant hover:text-on-surface transition-colors" title="Visualização em Grade">
+<span class="material-symbols-outlined text-[20px]" data-icon="grid_view">grid_view</span>
+</button>
+</div>
+<button class="hidden sm:flex items-center gap-2 px-4 py-2 rounded-lg bg-surface-container-low border border-hairline text-on-surface font-label-md text-label-md hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="download">download</span>
+                    Exportar CSV
+                </button>
+<button class="btn-primary px-4 py-2 rounded-lg font-label-md text-label-md flex items-center gap-2 shadow-[0_4px_12px_rgba(255,77,0,0.2)]">
+<span class="material-symbols-outlined text-[18px] font-bold" data-icon="add">add</span>
+                    Criar QR Code
+                </button>
+</div>
+</div>
+<!-- Filter Bar Area -->
+<div class="flex flex-col gap-4 p-4 rounded-xl bg-surface-container border border-hairline">
+<!-- Top Row: Search & Dropdowns -->
+<div class="flex flex-col lg:flex-row gap-3">
+<div class="relative flex-1 group">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant group-focus-within:text-primary transition-colors" data-icon="search">search</span>
+<input class="w-full bg-[#00121F] border border-hairline rounded-lg py-2 pl-10 pr-4 font-body-md text-body-md text-on-surface placeholder:text-on-surface-variant/50 focus:outline-none focus:border-[#FF4D00]/50 transition-colors" placeholder="Buscar por nome, destino ou link curto" type="text">
+</div>
+<div class="flex flex-wrap lg:flex-nowrap gap-2">
+<button class="flex items-center justify-between gap-2 px-3 py-2 bg-[#00121F] border border-hairline rounded-lg min-w-[120px] hover:border-outline-variant transition-colors group">
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface">Status</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</button>
+<button class="flex items-center justify-between gap-2 px-3 py-2 bg-[#00121F] border border-hairline rounded-lg min-w-[120px] hover:border-outline-variant transition-colors group">
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface">Tipo</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</button>
+<button class="flex items-center justify-between gap-2 px-3 py-2 bg-[#00121F] border border-hairline rounded-lg min-w-[120px] hover:border-outline-variant transition-colors group">
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface">Pasta</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</button>
+<button class="flex items-center justify-between gap-2 px-3 py-2 bg-[#00121F] border border-hairline rounded-lg min-w-[120px] hover:border-outline-variant transition-colors group">
+<span class="font-label-md text-label-md text-on-surface-variant group-hover:text-on-surface">Período</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant" data-icon="calendar_today">calendar_today</span>
+</button>
+<button class="flex items-center justify-center p-2 bg-[#00121F] border border-hairline rounded-lg hover:text-error hover:border-error/50 transition-colors text-on-surface-variant" title="Limpar Filtros">
+<span class="material-symbols-outlined text-[20px]" data-icon="filter_alt_off">filter_alt_off</span>
+</button>
+</div>
+</div>
+<!-- Active Filter Pills -->
+<div class="flex flex-wrap items-center gap-2 pt-2 border-t border-hairline border-dashed">
+<span class="font-caption text-caption text-on-surface-variant uppercase tracking-wider mr-2">Filtros Ativos:</span>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-tertiary-container/10 border border-tertiary-container/30 text-tertiary">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary"></span>
+<span class="font-label-md text-[12px]">Status: Ativo</span>
+<button class="ml-1 hover:text-white flex items-center justify-center rounded-full hover:bg-tertiary/20 p-0.5"><span class="material-symbols-outlined text-[14px]" data-icon="close">close</span></button>
+</div>
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-secondary-container/10 border border-secondary-container/30 text-secondary">
+<span class="material-symbols-outlined text-[14px]" data-icon="link">link</span>
+<span class="font-label-md text-[12px]">Tipo: URL</span>
+<button class="ml-1 hover:text-white flex items-center justify-center rounded-full hover:bg-secondary/20 p-0.5"><span class="material-symbols-outlined text-[14px]" data-icon="close">close</span></button>
+</div>
+</div>
+</div>
+<!-- Data Table Container -->
+<div class="bg-surface border border-hairline rounded-xl overflow-hidden shadow-lg relative">
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse min-w-[900px]">
+<thead>
+<tr class="border-b border-hairline bg-surface-container-low/50">
+<th class="py-3 pl-4 pr-2 w-12">
+<input class="w-4 h-4 rounded border-outline-variant bg-[#00121F] text-primary focus:ring-primary focus:ring-offset-0 checked:bg-primary checked:border-primary transition-colors cursor-pointer" id="selectAll" type="checkbox">
+</th>
+<th class="py-3 px-2 w-[60px] font-label-md text-[12px] text-on-surface-variant uppercase tracking-wider">QR</th>
+<th class="py-3 px-4 font-label-md text-[12px] text-on-surface-variant uppercase tracking-wider min-w-[200px]">Nome &amp; Link Curto</th>
+<th class="py-3 px-4 font-label-md text-[12px] text-on-surface-variant uppercase tracking-wider w-[120px]">Tipo</th>
+<th class="py-3 px-4 font-label-md text-[12px] text-on-surface-variant uppercase tracking-wider min-w-[180px]">Destino</th>
+<th class="py-3 px-4 font-label-md text-[12px] text-on-surface-variant uppercase tracking-wider w-[140px]">Scans (7d)</th>
+<th class="py-3 px-4 font-label-md text-[12px] text-on-surface-variant uppercase tracking-wider w-[100px]">Status</th>
+<th class="py-3 px-4 font-label-md text-[12px] text-on-surface-variant uppercase tracking-wider w-[80px]">Ativo</th>
+<th class="py-3 pr-4 pl-2 w-12"></th>
+</tr>
+</thead>
+<tbody class="font-body-md text-[13px]">
+<!-- Row 1: Active -->
+<tr class="border-b border-hairline table-row-hover group">
+<td class="py-3 pl-4 pr-2">
+<input class="w-4 h-4 rounded border-outline-variant bg-[#00121F] text-primary focus:ring-primary focus:ring-offset-0 checked:bg-primary checked:border-primary transition-colors cursor-pointer row-checkbox" type="checkbox">
+</td>
+<td class="py-3 px-2">
+<div class="w-[44px] h-[44px] bg-white rounded flex items-center justify-center p-1 shrink-0 border border-transparent group-hover:border-primary/30 transition-colors">
+<img alt="QR Code Thumb" class="w-full h-full object-contain mix-blend-multiply" data-alt="A small, crisp, black and white QR code graphic, standard pattern, high contrast, clean white background, digital interface element." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCL2XCSoqp0DBONQ7SnbfxXh96YmHDXy7b6CNyJGozqB65aTs7SNEkIYiDBlkgRMUwhFBlKEqvSJnixkSco0bHKE8r3JpVcAS3hE6kyzHy1We1r8h12a56rNyJlzlIxaCUyxKM55O_3XwRDk-Bi15VKW4sDEGTuY5oO0wQSCNM53vIZsCbAVA6jjvzfTh0ZfAyUenmnwtVNJesnB7OHZcXaZwKzf9TVMMz8eVAs09TgdGGCBKPVyLpDaw">
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-col justify-center">
+<span class="font-medium text-on-surface mb-0.5 group-hover:text-primary transition-colors cursor-pointer">Campanha Verão 2024</span>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="font-mono-data text-[11px] text-[#2fd9f4]">qrpro.link/v24</span>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant hover:text-white" title="Copiar Link">
+<span class="material-symbols-outlined text-[14px]" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="link">link</span>
+<span>URL</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="truncate max-w-[180px] text-on-surface-variant text-[12px] opacity-80" title="https://minhaempresa.com.br/promocao-verao-2024-especial">
+                                    https://minhaempresa.com.br/promocao-verao-2024-especial
+                                </div>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-col gap-1">
+<span class="font-mono-data text-on-surface">1,248</span>
+<svg class="opacity-80" height="16" viewBox="0 0 60 16" width="60">
+<path class="sparkline-path" d="M0,12 L10,14 L20,8 L30,10 L40,4 L50,6 L60,2"></path>
+</svg>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="inline-flex items-center justify-center px-2 py-0.5 rounded-full bg-tertiary/10 border border-tertiary/20 text-tertiary font-label-md text-[11px]">
+                                    Ativo
+                                </div>
+</td>
+<td class="py-3 px-4">
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 top-0 border-[#06283F] shadow-sm" id="toggle1" name="toggle1" type="checkbox">
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-surface-container-high cursor-pointer border border-hairline" for="toggle1"></label>
+</div>
+</td>
+<td class="py-3 pr-4 pl-2 text-right">
+<button class="p-1 rounded text-on-surface-variant hover:text-white hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 2: Paused -->
+<tr class="border-b border-hairline table-row-hover group">
+<td class="py-3 pl-4 pr-2">
+<input class="w-4 h-4 rounded border-outline-variant bg-[#00121F] text-primary focus:ring-primary focus:ring-offset-0 checked:bg-primary checked:border-primary transition-colors cursor-pointer row-checkbox" type="checkbox">
+</td>
+<td class="py-3 px-2">
+<div class="w-[44px] h-[44px] bg-white rounded flex items-center justify-center p-1 shrink-0 opacity-60 grayscale border border-transparent">
+<img alt="QR Code Thumb" class="w-full h-full object-contain mix-blend-multiply" data-alt="A small, crisp, black and white QR code graphic, standard pattern, high contrast, clean white background, digital interface element." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAxVZdF-2zQbCDEzUztOBJT4HJH0MGod8HowLwtj3CK3L76BHTlbdI5GYEOfiXZLapbFEaPDdtSTBIOUnoa1bDzy82572qGA7MiplCP5aT5ccXGZgJF_yqJJsRC-gxDaldLlifMjCtc6_3MYGpaaSpCse979O-aZtgbJ1oJpZ0g7c4oZtso9VT0fFCmHMYRX9xffnTSPnlrhIaFjmTqLKMUSO-SGXZBqRZjG6WrfqP6sBZNPFu6BOeF5g">
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-col justify-center opacity-70 group-hover:opacity-100 transition-opacity">
+<span class="font-medium text-on-surface mb-0.5">Cardápio Digital PDF</span>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="font-mono-data text-[11px]">qrpro.link/menu</span>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant hover:text-white" title="Copiar Link">
+<span class="material-symbols-outlined text-[14px]" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+</div>
+</td>
+<td class="py-3 px-4 opacity-70 group-hover:opacity-100">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="description">description</span>
+<span>PDF</span>
+</div>
+</td>
+<td class="py-3 px-4 opacity-70 group-hover:opacity-100">
+<div class="truncate max-w-[180px] text-on-surface-variant text-[12px] opacity-80" title="https://storage.qrpro.com/files/menu_v3.pdf">
+                                    https://storage.qrpro.com/files/menu_v3.pdf
+                                </div>
+</td>
+<td class="py-3 px-4 opacity-70 group-hover:opacity-100">
+<div class="flex flex-col gap-1">
+<span class="font-mono-data text-on-surface">342</span>
+<svg class="opacity-40" height="16" viewBox="0 0 60 16" width="60">
+<path d="M0,8 L10,8 L20,8 L30,8 L40,8 L50,8 L60,8" fill="none" stroke="#e6beb2" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="inline-flex items-center justify-center px-2 py-0.5 rounded-full bg-surface-variant border border-outline-variant text-on-surface-variant font-label-md text-[11px]">
+                                    Pausado
+                                </div>
+</td>
+<td class="py-3 px-4">
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 top-0 border-[#06283F] shadow-sm" id="toggle2" name="toggle2" type="checkbox">
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-surface-container-high cursor-pointer border border-hairline" for="toggle2"></label>
+</div>
+</td>
+<td class="py-3 pr-4 pl-2 text-right">
+<button class="p-1 rounded text-on-surface-variant hover:text-white hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 3: Scheduled -->
+<tr class="border-b border-hairline table-row-hover group">
+<td class="py-3 pl-4 pr-2">
+<input class="w-4 h-4 rounded border-outline-variant bg-[#00121F] text-primary focus:ring-primary focus:ring-offset-0 checked:bg-primary checked:border-primary transition-colors cursor-pointer row-checkbox" type="checkbox">
+</td>
+<td class="py-3 px-2">
+<div class="w-[44px] h-[44px] bg-white rounded flex items-center justify-center p-1 shrink-0 border border-transparent group-hover:border-primary/30 transition-colors">
+<img alt="QR Code Thumb" class="w-full h-full object-contain mix-blend-multiply" data-alt="A small, crisp, black and white QR code graphic, standard pattern, high contrast, clean white background, digital interface element." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCtWCXpkvvRysxLn68jKwKdJaOVFIZNPZWOjOeMelBpbW8bH9ZUjJK4u9b1hllQuV09UmpsiwWjW_51DeoLd0_8-LAwV-U6ld_d-WTiNO045QL2zXoXJknqBe0FP71QQB3iHyOBNRcoiOkgmA7PfnQF8wTeIbFl3uZFRLUJf1AqdskbFCiJ2Am88Qov7TgK8_-Cuv_F9S_vpUEcuGf2E1Cdy05AVxtdrvzGNoo7RxioAS943SqGYEewyw">
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-col justify-center">
+<span class="font-medium text-on-surface mb-0.5 group-hover:text-primary transition-colors cursor-pointer">Lançamento Produto X</span>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="font-mono-data text-[11px] text-[#2fd9f4]">qrpro.link/x-launch</span>
+<button class="opacity-0 group-hover:opacity-100 transition-opacity text-on-surface-variant hover:text-white" title="Copiar Link">
+<span class="material-symbols-outlined text-[14px]" data-icon="content_copy">content_copy</span>
+</button>
+</div>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="smart_button">smart_button</span>
+<span>Botão App</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="truncate max-w-[180px] text-on-surface-variant text-[12px] opacity-80" title="https://onelink.to/produto-x">
+                                    https://onelink.to/produto-x
+                                </div>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-col gap-1">
+<span class="font-mono-data text-on-surface">0</span>
+<span class="text-[10px] text-on-surface-variant/70">Inicia em 2 dias</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="inline-flex items-center justify-center px-2 py-0.5 rounded-full bg-[#00cbe6]/10 border border-[#00cbe6]/20 text-[#00cbe6] font-label-md text-[11px]">
+                                    Agendado
+                                </div>
+</td>
+<td class="py-3 px-4">
+<div class="relative inline-block w-10 mr-2 align-middle select-none transition duration-200 ease-in">
+<input checked="" class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none cursor-pointer z-10 top-0 border-[#06283F] shadow-sm" id="toggle3" name="toggle3" type="checkbox">
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-surface-container-high cursor-pointer border border-hairline" for="toggle3"></label>
+</div>
+</td>
+<td class="py-3 pr-4 pl-2 text-right">
+<button class="p-1 rounded text-on-surface-variant hover:text-white hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+<!-- Row 4: Expired -->
+<tr class="border-b border-hairline table-row-hover group bg-error/5">
+<td class="py-3 pl-4 pr-2">
+<input class="w-4 h-4 rounded border-outline-variant bg-[#00121F] text-primary focus:ring-primary focus:ring-offset-0 checked:bg-primary checked:border-primary transition-colors cursor-pointer row-checkbox" type="checkbox">
+</td>
+<td class="py-3 px-2">
+<div class="w-[44px] h-[44px] bg-white rounded flex items-center justify-center p-1 shrink-0 opacity-40 grayscale border border-transparent">
+<img alt="QR Code Thumb" class="w-full h-full object-contain mix-blend-multiply" data-alt="A small, crisp, black and white QR code graphic, standard pattern, high contrast, clean white background, digital interface element." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAcX7D-hzR-BKLhBKijZrw5mxJnfL134hdJX6NT5ul2ZChe-JRfSYhX_fDa3H-P6bcZm-lGZe05xyBX1CKRWeQKaTmryUIz2RJCgSLTf04FtvBXbbzkGMqgjeeKhHVaH5mot9T_BJqASuu2LC4VF_n__P5wgV3Afe_SHik07GEWsH8DfWH7keat4d4-kKxHSaSe6qSSvu-1Aol-hbuCxb9_1HocuAEhrsSjN8cC4PDOxeL7C7je9rM58Q">
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="flex flex-col justify-center opacity-60">
+<span class="font-medium text-on-surface mb-0.5 line-through">Promo Black Friday</span>
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="font-mono-data text-[11px]">qrpro.link/bf23</span>
+</div>
+</div>
+</td>
+<td class="py-3 px-4 opacity-60">
+<div class="flex items-center gap-1.5 text-on-surface-variant">
+<span class="material-symbols-outlined text-[16px]" data-icon="shopping_cart">shopping_cart</span>
+<span>Vcard</span>
+</div>
+</td>
+<td class="py-3 px-4 opacity-60">
+<div class="truncate max-w-[180px] text-on-surface-variant text-[12px] opacity-80">
+                                    https://loja.com/bf
+                                </div>
+</td>
+<td class="py-3 px-4 opacity-60">
+<div class="flex flex-col gap-1">
+<span class="font-mono-data text-on-surface">8,902</span>
+</div>
+</td>
+<td class="py-3 px-4">
+<div class="inline-flex items-center justify-center px-2 py-0.5 rounded-full bg-error/10 border border-error/20 text-[#ffb4ab] font-label-md text-[11px]">
+                                    Expirado
+                                </div>
+</td>
+<td class="py-3 px-4">
+<div class="relative inline-block w-10 mr-2 align-middle select-none opacity-50 pointer-events-none">
+<input class="toggle-checkbox absolute block w-5 h-5 rounded-full bg-white border-4 appearance-none z-10 top-0 border-[#06283F] shadow-sm" disabled="" type="checkbox">
+<label class="toggle-label block overflow-hidden h-5 rounded-full bg-surface-container-high border border-hairline"></label>
+</div>
+</td>
+<td class="py-3 pr-4 pl-2 text-right">
+<button class="p-1 rounded text-on-surface-variant hover:text-white hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined" data-icon="more_vert">more_vert</span>
+</button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Pagination -->
+<div class="flex items-center justify-between px-4 py-3 border-t border-hairline bg-[#011521]">
+<span class="font-body-md text-caption text-on-surface-variant">Mostrando 1 a 4 de 42 códigos</span>
+<div class="flex items-center gap-1">
+<button class="p-1 rounded text-on-surface-variant hover:text-white hover:bg-surface-container-high transition-colors disabled:opacity-50" disabled="">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<button class="w-8 h-8 rounded bg-surface-container-high text-on-surface font-label-md flex items-center justify-center border border-outline-variant">1</button>
+<button class="w-8 h-8 rounded text-on-surface-variant hover:bg-surface-container-high font-label-md flex items-center justify-center transition-colors">2</button>
+<button class="w-8 h-8 rounded text-on-surface-variant hover:bg-surface-container-high font-label-md flex items-center justify-center transition-colors">3</button>
+<span class="text-on-surface-variant mx-1">...</span>
+<button class="w-8 h-8 rounded text-on-surface-variant hover:bg-surface-container-high font-label-md flex items-center justify-center transition-colors">11</button>
+<button class="p-1 rounded text-on-surface-variant hover:text-white hover:bg-surface-container-high transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_right">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Glass Bulk Action Bar (Hidden by default, shown via JS simulation for visual demo) -->
+<!-- Added translate-y-0 class to simulate it being active for the visual output -->
+<div class="fixed bottom-8 left-1/2 -translate-x-1/2 z-50 transition-transform duration-300 translate-y-0" id="bulkActionBar">
+<div class="glass-panel px-4 py-3 rounded-full shadow-[0_24px_60px_rgba(0,0,0,0.45)] flex items-center gap-4">
+<div class="flex items-center gap-2 pr-4 border-r border-hairline">
+<div class="w-6 h-6 rounded-full bg-primary/20 text-primary flex items-center justify-center font-label-md text-[12px]">3</div>
+<span class="font-label-md text-[13px] text-on-surface">selecionados</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors text-on-surface font-label-md text-[13px]">
+<span class="material-symbols-outlined text-[16px] text-tertiary" data-icon="play_arrow">play_arrow</span>
+                    Ativar
+                </button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors text-on-surface font-label-md text-[13px]">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="pause">pause</span>
+                    Pausar
+                </button>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-white/10 transition-colors text-on-surface font-label-md text-[13px]">
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant" data-icon="folder_move">maps_ar</span>
+                    Mover
+                </button>
+<div class="w-px h-4 bg-hairline mx-1"></div>
+<button class="flex items-center gap-1.5 px-3 py-1.5 rounded-full hover:bg-error/20 transition-colors text-error font-label-md text-[13px]">
+<span class="material-symbols-outlined text-[16px]" data-icon="delete">delete</span>
+                    Excluir
+                </button>
+</div>
+<button class="ml-2 p-1 rounded-full text-on-surface-variant hover:text-white hover:bg-white/10 transition-colors" id="closeBulkAction" title="Fechar">
+<span class="material-symbols-outlined text-[18px]" data-icon="close">close</span>
+</button>
+</div>
+</div>
+<!-- Script for simple interactions -->
+<script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Select All logic
+            const selectAll = document.getElementById('selectAll');
+            const rowCheckboxes = document.querySelectorAll('.row-checkbox');
+            const bulkActionBar = document.getElementById('bulkActionBar');
+            const closeBulkAction = document.getElementById('closeBulkAction');
+            
+            // Simple logic to show/hide bulk bar based on checks (for demo purposes)
+            // Initially hiding it to demonstrate the interaction
+            bulkActionBar.classList.add('translate-y-24', 'opacity-0');
+            bulkActionBar.classList.remove('translate-y-0');
+
+            function updateBulkBar() {
+                const anyChecked = Array.from(rowCheckboxes).some(cb => cb.checked);
+                if(anyChecked) {
+                    bulkActionBar.classList.remove('translate-y-24', 'opacity-0');
+                    bulkActionBar.classList.add('translate-y-0', 'opacity-100');
+                } else {
+                    bulkActionBar.classList.add('translate-y-24', 'opacity-0');
+                    bulkActionBar.classList.remove('translate-y-0', 'opacity-100');
+                }
+            }
+
+            selectAll.addEventListener('change', (e) => {
+                rowCheckboxes.forEach(cb => {
+                    if(!cb.disabled) cb.checked = e.target.checked;
+                });
+                updateBulkBar();
+            });
+
+            rowCheckboxes.forEach(cb => {
+                cb.addEventListener('change', () => {
+                    updateBulkBar();
+                    // Update selectAll state
+                    const allChecked = Array.from(rowCheckboxes).filter(c=>!c.disabled).every(c => c.checked);
+                    selectAll.checked = allChecked;
+                });
+            });
+
+            closeBulkAction.addEventListener('click', () => {
+                rowCheckboxes.forEach(cb => cb.checked = false);
+                selectAll.checked = false;
+                updateBulkBar();
+            });
+            
+            // Simulate 3 items checked for visual output on load
+            setTimeout(() => {
+                 rowCheckboxes[0].checked = true;
+                 rowCheckboxes[1].checked = true;
+                 rowCheckboxes[2].checked = true;
+                 updateBulkBar();
+            }, 500);
+        });
+    </script>
+</body></html>

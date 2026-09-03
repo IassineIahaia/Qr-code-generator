@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="pt-BR"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>QR Generator Pro - Dashboard</title>
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@500&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Config -->
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "on-primary-fixed-variant": "#852400",
+                    "primary-fixed": "#ffdbd0",
+                    "tertiary-container": "#00a574",
+                    "surface-container-lowest": "#00101b",
+                    "outline": "#ad897e",
+                    "surface-container-high": "#192c39",
+                    "on-tertiary": "#003825",
+                    "secondary": "#5de6ff",
+                    "inverse-surface": "#d1e5f6",
+                    "on-background": "#d1e5f6",
+                    "on-secondary-fixed": "#001f25",
+                    "on-primary-container": "#521300",
+                    "on-tertiary-container": "#003120",
+                    "surface-bright": "#283b49",
+                    "secondary-fixed": "#a2eeff",
+                    "surface-tint": "#ffb59e",
+                    "surface": "#011521",
+                    "background": "#011521",
+                    "on-secondary-container": "#00515d",
+                    "inverse-primary": "#ae3200",
+                    "secondary-fixed-dim": "#2fd9f4",
+                    "on-primary-fixed": "#3a0b00",
+                    "on-tertiary-fixed-variant": "#005137",
+                    "tertiary-fixed": "#68fcbf",
+                    "error": "#ffb4ab",
+                    "tertiary": "#45dfa4",
+                    "surface-dim": "#011521",
+                    "on-surface-variant": "#e6beb2",
+                    "error-container": "#93000a",
+                    "on-surface": "#d1e5f6",
+                    "primary-fixed-dim": "#ffb59e",
+                    "surface-container": "#0d222e",
+                    "on-secondary-fixed-variant": "#004e5a",
+                    "on-primary": "#5e1700",
+                    "on-error-container": "#ffdad6",
+                    "surface-variant": "#243744",
+                    "outline-variant": "#5c4037",
+                    "surface-container-low": "#091e2a",
+                    "on-error": "#690005",
+                    "secondary-container": "#00cbe6",
+                    "tertiary-fixed-dim": "#45dfa4",
+                    "on-tertiary-fixed": "#002114",
+                    "inverse-on-surface": "#1f333f",
+                    "primary": "#ffb59e",
+                    "on-secondary": "#00363e",
+                    "surface-container-highest": "#243744",
+                    "primary-container": "#ff571a"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "spacing": {
+                    "margin-mobile": "16px",
+                    "container-max": "1280px",
+                    "gutter": "24px",
+                    "stack-lg": "32px",
+                    "stack-sm": "8px",
+                    "stack-md": "16px"
+            },
+            "fontFamily": {
+                    "headline-md": ["Inter"],
+                    "body-md": ["Inter"],
+                    "caption": ["Inter"],
+                    "display-lg": ["Inter"],
+                    "mono-data": ["JetBrains Mono"],
+                    "label-md": ["Inter"],
+                    "headline-lg": ["Inter"],
+                    "title-sm": ["Inter"],
+                    "body-lg": ["Inter"]
+            },
+            "fontSize": {
+                    "headline-md": ["24px", {"lineHeight": "1.3", "letterSpacing": "-0.01em", "fontWeight": "600"}],
+                    "body-md": ["14px", {"lineHeight": "1.5", "fontWeight": "400"}],
+                    "caption": ["11px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "display-lg": ["40px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "700"}],
+                    "mono-data": ["13px", {"lineHeight": "1.5", "fontWeight": "500"}],
+                    "label-md": ["13px", {"lineHeight": "1.4", "fontWeight": "500"}],
+                    "headline-lg": ["32px", {"lineHeight": "1.2", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                    "title-sm": ["18px", {"lineHeight": "1.4", "fontWeight": "600"}],
+                    "body-lg": ["16px", {"lineHeight": "1.6", "fontWeight": "400"}]
+            }
+          }
+        }
+      }
+    </script>
+<style>
+        /* Hide scrollbar for horizontal carousels */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-background antialiased min-h-screen relative overflow-x-hidden">
+<!-- Ambient Glow Background -->
+<div class="fixed inset-0 pointer-events-none z-0">
+<div class="absolute top-0 right-0 w-96 h-96 bg-[#FF4D00] opacity-[0.08] blur-[100px] rounded-full mix-blend-screen transform translate-x-1/3 -translate-y-1/3"></div>
+<div class="absolute bottom-0 left-0 w-96 h-96 bg-[#06283F] opacity-40 blur-[100px] rounded-full mix-blend-screen transform -translate-x-1/3 translate-y-1/3"></div>
+</div>
+<!-- SVG Definitions for Gradients -->
+<svg class="absolute hidden" height="0" width="0">
+<defs>
+<lineargradient id="primaryGradient" x1="0%" x2="100%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#FF4D00"></stop>
+<stop offset="100%" stop-color="#FF8A00"></stop>
+</lineargradient>
+<lineargradient id="areaGradient" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#FF4D00" stop-opacity="0.3"></stop>
+<stop offset="100%" stop-color="#FF4D00" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<!-- TopAppBar Component -->
+<header class="bg-surface/72 dark:bg-surface/72 backdrop-blur-xl fixed top-0 w-full border-b border-outline-variant/30 flex justify-between items-center px-margin-mobile h-16 z-50">
+<div class="flex items-center gap-3 active:scale-95 transition-transform duration-150">
+<div class="w-8 h-8 rounded-full bg-surface-container overflow-hidden border border-outline-variant/30 flex items-center justify-center">
+<span class="material-symbols-outlined text-primary text-[20px]">workspace_premium</span>
+</div>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">Workspace</span>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full hover:bg-surface-container-high/50 transition-colors active:scale-95 duration-150 text-on-surface-variant">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</header>
+<!-- Main Content Canvas -->
+<main class="relative z-10 pt-20 pb-28 px-margin-mobile flex flex-col space-y-gutter w-full max-w-container-max mx-auto">
+<!-- Header Section -->
+<section class="flex flex-col space-y-1">
+<h1 class="font-headline-lg text-headline-lg text-on-surface">Bom dia, Iassine</h1>
+<p class="font-body-md text-body-md text-on-surface-variant">Desempenho dos últimos 30 dias</p>
+</section>
+<!-- KPI Carousel -->
+<section class="flex overflow-x-auto snap-x snap-mandatory hide-scrollbar space-x-stack-md pb-2 -mx-margin-mobile px-margin-mobile">
+<!-- Card 1: Total QR Codes -->
+<div class="snap-start shrink-0 w-64 bg-surface rounded-xl p-4 border border-outline-variant/30 flex flex-col justify-between space-y-4">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant">Total de QR Codes</span>
+<span class="material-symbols-outlined text-outline text-[18px]">qr_code</span>
+</div>
+<div>
+<div class="font-display-lg text-display-lg text-on-surface">42</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-caption text-caption text-tertiary flex items-center bg-tertiary/10 px-1.5 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px] leading-none">trending_up</span> +12%
+                        </span>
+</div>
+</div>
+<div class="w-full h-8 mt-2 relative">
+<svg class="w-full h-full overflow-visible preserve-aspect-ratio=" none"="" viewbox="0 0 100 20">
+<path d="M0,15 L20,12 L40,16 L60,8 L80,10 L100,2" fill="none" stroke="url(#primaryGradient)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<!-- Card 2: Scans -->
+<div class="snap-start shrink-0 w-64 bg-surface rounded-xl p-4 border border-outline-variant/30 flex flex-col justify-between space-y-4">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant">Scans no período</span>
+<span class="material-symbols-outlined text-outline text-[18px]">visibility</span>
+</div>
+<div>
+<div class="font-display-lg text-display-lg text-on-surface">8.412</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-caption text-caption text-tertiary flex items-center bg-tertiary/10 px-1.5 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px] leading-none">trending_up</span> +24%
+                        </span>
+</div>
+</div>
+<div class="w-full h-8 mt-2 relative">
+<svg class="w-full h-full overflow-visible preserve-aspect-ratio=" none"="" viewbox="0 0 100 20">
+<path d="M0,18 L20,14 L40,15 L60,6 L80,4 L100,2" fill="none" stroke="url(#primaryGradient)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+<!-- Card 3: Active -->
+<div class="snap-start shrink-0 w-64 bg-surface rounded-xl p-4 border border-outline-variant/30 flex flex-col justify-between space-y-4">
+<div class="flex justify-between items-start">
+<span class="font-label-md text-label-md text-on-surface-variant">QR Codes ativos</span>
+<span class="material-symbols-outlined text-outline text-[18px]">check_circle</span>
+</div>
+<div>
+<div class="font-display-lg text-display-lg text-on-surface">37</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-caption text-caption text-on-surface-variant flex items-center px-1.5 py-0.5">
+                             Estável
+                        </span>
+</div>
+</div>
+<div class="w-full h-8 mt-2 relative opacity-50">
+<svg class="w-full h-full overflow-visible preserve-aspect-ratio=" none"="" viewbox="0 0 100 20">
+<path d="M0,10 L20,9 L40,11 L60,10 L80,10 L100,9" fill="none" stroke="url(#primaryGradient)" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
+</svg>
+</div>
+</div>
+</section>
+<!-- Main Area Chart -->
+<section class="bg-surface rounded-xl border border-outline-variant/30 p-4 flex flex-col space-y-4 shadow-sm">
+<div class="flex justify-between items-center">
+<h2 class="font-title-sm text-title-sm text-on-surface">Scans ao longo do tempo</h2>
+<button class="text-on-surface-variant hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]">more_horiz</span>
+</button>
+</div>
+<div class="relative w-full h-40 mt-2">
+<!-- Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between pointer-events-none">
+<div class="border-b border-outline-variant/20 w-full h-0"></div>
+<div class="border-b border-outline-variant/20 w-full h-0"></div>
+<div class="border-b border-outline-variant/20 w-full h-0"></div>
+<div class="border-b border-outline-variant/20 w-full h-0"></div>
+</div>
+<!-- Area Chart SVG -->
+<svg class="w-full h-full overflow-visible preserve-aspect-ratio=" none"="" viewbox="0 0 400 150">
+<path d="M0,120 Q50,110 100,70 T200,80 T300,30 T400,40 L400,150 L0,150 Z" fill="url(#areaGradient)"></path>
+<path d="M0,120 Q50,110 100,70 T200,80 T300,30 T400,40" fill="none" stroke="url(#primaryGradient)" stroke-linecap="round" stroke-width="2.5"></path>
+<!-- Highlight Point -->
+<circle cx="300" cy="30" fill="#011521" r="4" stroke="url(#primaryGradient)" stroke-width="2"></circle>
+</svg>
+</div>
+<div class="flex justify-between font-caption text-caption text-outline px-1">
+<span>01 Out</span>
+<span>15 Out</span>
+<span>31 Out</span>
+</div>
+</section>
+<!-- Top QR Codes List -->
+<section class="bg-surface rounded-xl border border-outline-variant/30 flex flex-col overflow-hidden">
+<div class="p-4 flex justify-between items-center border-b border-outline-variant/20">
+<h2 class="font-title-sm text-title-sm text-on-surface">Top QR Codes</h2>
+<a class="font-label-md text-label-md text-primary hover:text-primary-container transition-colors" href="#">Ver todos</a>
+</div>
+<div class="flex flex-col">
+<!-- Row 1 -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-high/30 transition-colors border-b border-outline-variant/10 last:border-0 cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-white rounded-md p-1 flex items-center justify-center shrink-0">
+<img class="w-full h-full object-contain mix-blend-multiply opacity-90" data-alt="A small, crisp, black and white minimalist QR code image displayed inside a white square container, giving a professional corporate technology vibe." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaBYb4p3-2iGLEe3ma_BScDm-dUw3s1kbIppN9aGhmHXPHhBdqzPiM5t_VnIgMUwcq0LJW6C_Lm3VQvPO_DTkL9KEJSR5uLZZ1CBbsTrFcsfaqhnpnYdaHjyovoIKWRsZx3_yYVURzje9zH1dAq5xZZ8ScN6BGtYBwG_Siy2zczMpRZaB_uxfZQrhK3qV12-ynOKfGqqfnVvlqH3BreN9dkhpGQDfyrYddP2XpnLaazP0HP-ehp_aVlw"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Campanha Black Friday</span>
+<span class="font-mono-data text-mono-data text-primary/80">qr.link/bf24</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-body-md text-body-md text-on-surface">3.240</span>
+<span class="font-caption text-caption text-on-surface-variant">scans</span>
+</div>
+</div>
+<!-- Row 2 -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-high/30 transition-colors border-b border-outline-variant/10 last:border-0 cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-white rounded-md p-1 flex items-center justify-center shrink-0">
+<img class="w-full h-full object-contain mix-blend-multiply opacity-90" data-alt="A sharply defined minimalist digital QR code block graphic, black on white background, presented in a clean and modern style for a tech interface." src="https://lh3.googleusercontent.com/aida-public/AB6AXuB5W6D9NfSDBLbZPARymNPbQUy-gXHqDpfE1pexr6ETqZo0Gc9aPY1PQmoRvTwmTDGgF7naFLvNrwbp46ZxA5UDaKWB5mouGZWl4ZL2LLWEoiUG16H8ZNeyxQefb3SqWU6cNdsGPSH51p5IIjcYFd38Yw9fnS1ctRWHqXQCa2B7j2TdGHulYKq_k76WgGhmvU0uBYn9rwIVzSdzeyzJwe7BxMSUCtpgKkJTRC2R8KlQFxKBrfTKBHfltg"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Menu Digital Restaurante</span>
+<span class="font-mono-data text-mono-data text-primary/80">qr.link/menu</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-body-md text-body-md text-on-surface">1.890</span>
+<span class="font-caption text-caption text-on-surface-variant">scans</span>
+</div>
+</div>
+<!-- Row 3 -->
+<div class="flex items-center justify-between p-4 hover:bg-surface-container-high/30 transition-colors border-b border-outline-variant/10 last:border-0 cursor-pointer">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 bg-white rounded-md p-1 flex items-center justify-center shrink-0">
+<img class="w-full h-full object-contain mix-blend-multiply opacity-90" data-alt="A clean, abstract representation of a quick response barcode, monochrome, stark contrast, conveying data transfer and modern digital tools." src="https://lh3.googleusercontent.com/aida-public/AB6AXuBE2kC9b0jiSiFg3zdS2vkSjOp0AtoEX-iv_V2_JNd4U9V6QRvIGz9lggtCBW4Bfq4bjwjsYS2BkbsNU6_4tChA3mBTX7mfyYboeeiJmGTDS-XfrA3RoJEOwHXatsuYknTkw9QE89rYSey_qEVP5H_czrmCVmEKJuIltmD7nehNK9fwS0V4HRCHabXbmwXalRmjVNlHNZoXjWW5HVi8eLUruEQi0YrIxtTKkguFne-_e9I4Tdjewv5Etg"/>
+</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Cartão de Visita</span>
+<span class="font-mono-data text-mono-data text-primary/80">qr.link/vcard</span>
+</div>
+</div>
+<div class="flex flex-col items-end">
+<span class="font-body-md text-body-md text-on-surface">854</span>
+<span class="font-caption text-caption text-on-surface-variant">scans</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Device Breakdown & Activity Grid (Stacked on Mobile) -->
+<div class="flex flex-col space-y-gutter">
+<!-- Device Breakdown -->
+<section class="bg-surface rounded-xl border border-outline-variant/30 p-4 flex flex-col">
+<h2 class="font-title-sm text-title-sm text-on-surface mb-4">Dispositivos</h2>
+<div class="flex items-center justify-between">
+<div class="relative w-24 h-24 shrink-0">
+<!-- CSS Donut Chart -->
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 36 36">
+<!-- Background Circle -->
+<path class="text-surface-container-high" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-width="4"></path>
+<!-- Segment 1 (iOS) -->
+<path class="text-primary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="65, 100" stroke-width="4"></path>
+<!-- Segment 2 (Android) -->
+<path class="text-tertiary-container" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="25, 100" stroke-dashoffset="-65" stroke-width="4"></path>
+<!-- Segment 3 (Other) -->
+<path class="text-secondary" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke="currentColor" stroke-dasharray="10, 100" stroke-dashoffset="-90" stroke-width="4"></path>
+</svg>
+<div class="absolute inset-0 flex items-center justify-center font-label-md text-label-md text-on-surface font-bold">
+                            65%
+                        </div>
+</div>
+<div class="flex flex-col justify-center space-y-2 ml-4 flex-1">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-primary-container"></div>
+<span class="font-body-md text-body-md text-on-surface-variant">iOS</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">65%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-tertiary-container"></div>
+<span class="font-body-md text-body-md text-on-surface-variant">Android</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">25%</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-secondary"></div>
+<span class="font-body-md text-body-md text-on-surface-variant">Desktop/Outros</span>
+</div>
+<span class="font-label-md text-label-md text-on-surface">10%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Recent Activity Timeline -->
+<section class="bg-surface rounded-xl border border-outline-variant/30 p-4 flex flex-col">
+<h2 class="font-title-sm text-title-sm text-on-surface mb-4">Atividade Recente</h2>
+<div class="relative pl-4 border-l border-outline-variant/20 space-y-6">
+<!-- Event 1 -->
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-primary-container border-2 border-surface"></div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">QR Code Criado</span>
+<span class="font-body-md text-body-md text-on-surface-variant">"Promoção Inverno" gerado com sucesso.</span>
+<span class="font-caption text-caption text-outline mt-1">Hoje, 09:42</span>
+</div>
+</div>
+<!-- Event 2 -->
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-outline-variant border-2 border-surface"></div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">QR Code Pausado</span>
+<span class="font-body-md text-body-md text-on-surface-variant">"Vaga Desenvolvedor" foi pausado.</span>
+<span class="font-caption text-caption text-outline mt-1">Ontem, 16:15</span>
+</div>
+</div>
+<!-- Event 3 -->
+<div class="relative">
+<div class="absolute -left-[21px] top-1 w-2.5 h-2.5 rounded-full bg-tertiary border-2 border-surface"></div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface">Meta Atingida</span>
+<span class="font-body-md text-body-md text-on-surface-variant">"Campanha Black Friday" passou de 3.000 scans.</span>
+<span class="font-caption text-caption text-outline mt-1">12 Out, 11:20</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- BottomNavBar Component -->
+<nav class="fixed bottom-0 w-full rounded-t-xl bg-surface-container-low/80 dark:bg-surface-container-low/80 backdrop-blur-xl border-t border-outline-variant/20 shadow-lg fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-2 pb-6 pt-2">
+<!-- Active: Dashboard -->
+<a class="flex flex-col items-center justify-center text-primary dark:text-primary-fixed bg-primary-container/10 rounded-xl px-3 py-1 active:scale-90 transition-transform hover:text-primary transition-all" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">grid_view</span>
+<span class="font-label-md text-label-md text-[10px]">Dashboard</span>
+</a>
+<!-- Inactive: QR Codes -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform hover:text-primary transition-all px-3 py-1" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">qr_code_2</span>
+<span class="font-label-md text-label-md text-[10px]">QR Codes</span>
+</a>
+<!-- Inactive: Create -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform hover:text-primary transition-all px-3 py-1 relative" href="#">
+<div class="absolute -top-3 w-10 h-10 bg-gradient-to-tr from-primary-container to-primary rounded-full flex items-center justify-center shadow-lg border-2 border-background text-on-primary">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</div>
+<div class="h-6"></div> <!-- Spacer for floating button -->
+<span class="font-label-md text-label-md text-[10px] mt-1">Create</span>
+</a>
+<!-- Inactive: Analytics -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform hover:text-primary transition-all px-3 py-1" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">leaderboard</span>
+<span class="font-label-md text-label-md text-[10px]">Analytics</span>
+</a>
+<!-- Inactive: Profile -->
+<a class="flex flex-col items-center justify-center text-on-surface-variant active:scale-90 transition-transform hover:text-primary transition-all px-3 py-1" href="#">
+<span class="material-symbols-outlined mb-1 text-[24px]">person</span>
+<span class="font-label-md text-label-md text-[10px]">Profile</span>
+</a>
+</nav>
+</body></html>
